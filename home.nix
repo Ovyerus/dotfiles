@@ -35,6 +35,7 @@
 
   xdg.configFile = {
     "karabiner/assets/complex_modifications/meh.json".source = ./files/karabiner/meh.json;
+    "git/allowed_signers".source = ./files/git/allowed_signers;
   };
 
   programs.git = {
@@ -47,14 +48,15 @@
     extraConfig = {
       pull.rebase = true;
       init.defaultBranch = "main";
+      log.showSignature = true;
 
+      gpg.ssh.allowedSignersFile = "~/.config/git/allowed_signers";
       user.signingKey = "~/.ssh/id_ed25519_sk_rk";
       gpg.format = "ssh";
       commit.gpgsign = true;
       tag.gpgsign = true;
-
-      # "gpg \"ssh\"".program = "gfh-keygen";
-      # "gpg \"ssh\"".defaultKeyCommand = "gfh";
+      # "gpg.ssh.program = "gfh-keygen";
+      # "gpg.ssh.defaultKeyCommand = "gfh";
     };
   };
 
