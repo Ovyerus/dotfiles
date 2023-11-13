@@ -1,0 +1,50 @@
+{
+  "title": "Backspace → Meh (⌃⌥⇧) Z",
+  "rules": [
+    {
+      "description": "Caps Lock to Backspace",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "optional": [
+                "left_command",
+                "left_option",
+                "left_control",
+                "left_shift",
+                "fn"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "delete_or_backspace"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Backspace → Meh (⌃⌥⇧) Z",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "delete_or_backspace",
+            "modifiers": {
+              "optional": ["right_command", "left_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_shift",
+              "modifiers": ["left_control", "left_option"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}

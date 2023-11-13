@@ -17,7 +17,6 @@
   # environment.
   home.packages = with pkgs; [
     age-plugin-yubikey
-    bartib
     colmena
     du-dust
     duf
@@ -29,23 +28,35 @@
     ripgrep
     zellij
     mtr
-    nixd
   ];
 
   # TODO: configure bat, fzf, etc.
   # https://github.com/sharkdp/bat/issues/357
 
-  home.file = { };
+  xdg.configFile = {
+    "karabiner/assets/complex_modifications/meh.json".source = ./files/karabiner/meh.json;
+  };
 
-  # programs.git = {
-  #   enable = true;
-  #   userName = "Ovyerus";
-  #   userEmail = "ovy@ovyerus.com";
-  #   extraConfig = {
-  #     pull.rebase = true;
-  #     init.defaultBranch = "main";
-  #   };
-  # };
+  programs.git = {
+    enable = true;
+    userName = "Ovyerus";
+    userEmail = "ovy@ovyerus.com";
+    # delta.enable = true;
+    difftastic.enable = true;
+
+    extraConfig = {
+      pull.rebase = true;
+      init.defaultBranch = "main";
+
+      user.signingKey = "~/.ssh/id_ed25519_sk_rk";
+      gpg.format = "ssh";
+      commit.gpgsign = true;
+      tag.gpgsign = true;
+
+      # "gpg \"ssh\"".program = "gfh-keygen";
+      # "gpg \"ssh\"".defaultKeyCommand = "gfh";
+    };
+  };
 
   # programs.rtx = {
   #   enable = true;
