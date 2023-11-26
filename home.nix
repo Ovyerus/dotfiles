@@ -1,12 +1,14 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.username = "ovy";
   home.homeDirectory = "/Users/ovy";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
-   # introduces backwards incompatible changes.
+  # introduces backwards incompatible changes.
   #
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
@@ -17,14 +19,18 @@
   # environment.
   home.packages = with pkgs; [
     age-plugin-yubikey
+    alejandra
+    cachix
     colmena
     du-dust
     duf
+    eza
     fd
     fzf
     jq
     macchina
     magic-wormhole-rs
+    nix-your-shell
     ripgrep
     zellij
     mtr
@@ -75,6 +81,7 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    config.whitelist.prefix = ["/Users/ovy/Projects/personal"];
   };
 
   programs.micro = {
@@ -92,6 +99,7 @@
     enable = true;
     interactiveShellInit = ''
       set fish_greeting
+      nix-your-shell fish | source
     '';
 
     shellAbbrs = {
@@ -100,7 +108,9 @@
 
     shellAliases = {
       cat = "bat";
-      code = "code-insiders";
+      ls = "eza";
+      # TODO: only set if applicable
+      # code = "code-insiders";
       dc = "docker compose";
       hm = "home-manager";
       ncg = "nix-collect-garbage";
@@ -162,16 +172,16 @@
     enableFishIntegration = true;
   };
 
-  # You can also manage environment variables but you will have to manually
-  # source
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/ovy/etc/profile.d/hm-session-vars.sh
-  #
-  # if you don't want to manage your shell through Home Manager.
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "ssh";
+      aliases = {
+        clone = "repo clone";
+      };
+    };
+  };
+
   home.sessionVariables = {
     EDITOR = "micro";
   };
