@@ -15,6 +15,7 @@
       pull.rebase = true;
       init.defaultBranch = "main";
       log.showSignature = true;
+      core.editor = "code --wait";
 
       gpg.ssh.allowedSignersFile = "~/.config/git/allowed_signers";
       user.signingKey = "~/.ssh/id_ed25519_sk_rk";
