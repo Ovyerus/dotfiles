@@ -13,8 +13,14 @@
       italic-text = "always";
     };
   };
-  home.sessionVariables.MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-  home.sessionVariables.MANROFFOPT = "-c";
+
+  # Pager & manpages options
+  home.sessionVariables = {
+    PAGER = "moar";
+    MOAR = "--no-linenumbers";
+    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    MANROFFOPT = "-c";
+  };
 
   programs.direnv = {
     enable = true;

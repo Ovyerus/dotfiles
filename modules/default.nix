@@ -26,6 +26,7 @@
     macchina
     magic-wormhole-rs
     minisign
+    moar
     mtr
     nix-your-shell
     rage
