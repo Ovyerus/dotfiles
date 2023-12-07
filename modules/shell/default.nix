@@ -25,7 +25,17 @@
     '';
 
     shellAbbrs = {
+      ga = "git add";
+      gc = {
+        setCursor = "%";
+        expansion = "git commit -m \\\"%\\\"";
+      };
       gco = "git checkout";
+      gd = "git diff HEAD";
+      gl = "git log";
+      gp = "git pull";
+      gr = "git rebase";
+      gs = "git status";
     };
 
     shellAliases = {
