@@ -26,6 +26,7 @@
 
     shellAbbrs = {
       ga = "git add";
+      gaa = "git add -A";
       gc = {
         setCursor = "%";
         expansion = "git commit -m \\\"%\\\"";
@@ -44,6 +45,8 @@
       dc = "docker compose";
       hm = "home-manager";
       ncg = "nix-collect-garbage";
+      yws = "yarn workspace";
+      ywss = "yarn workspaces";
       ze = "zellij";
     };
 
