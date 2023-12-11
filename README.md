@@ -24,4 +24,5 @@ nix run home-manager/master -- init --switch
 
 ## License
 
-All data in this repository is available under the [MIT-0 License](./LICENSE).
+All data in this repository is available in the public domain via the
+[Unlicense](./LICENSE). Refer to https://unlicense.org/ for more info.

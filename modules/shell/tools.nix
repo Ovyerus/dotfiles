@@ -25,7 +25,10 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-    config.whitelist.prefix = ["/Users/ovy/Projects/personal"];
+    config.whitelist.prefix = [
+      "/Users/ovy/Projects/personal"
+      "/Users/ovy/Projects/bots-gg"
+    ];
   };
 
   # TODO: decide on this vs lsd?
