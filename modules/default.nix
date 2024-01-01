@@ -23,6 +23,7 @@
     du-dust
     duf
     fd
+    hexyl
     jq
     macchina
     magic-wormhole-rs
