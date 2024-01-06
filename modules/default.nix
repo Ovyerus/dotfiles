@@ -25,12 +25,14 @@
     fd
     hexyl
     jq
+    lazydocker
     macchina
     magic-wormhole-rs
     minisign
     moar
     mtr
     nix-your-shell
+    pgcli
     rage
     ripgrep
     xh

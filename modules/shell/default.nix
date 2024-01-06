@@ -29,7 +29,7 @@
       gaa = "git add -A";
       gc = {
         setCursor = "%";
-        expansion = "git commit -m \\\"%\\\"";
+        expansion = "git commit -m \"%\"";
       };
       gco = "git checkout";
       gd = "git diff HEAD";
