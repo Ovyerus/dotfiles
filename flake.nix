@@ -24,6 +24,10 @@
     system = "aarch64-darwin";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
+    # TODO: options to have
+    # desktop - target is desktop environment, include gui apps and stuff (os-specific stuff limited behind system)
+    # minimal - mostly just shell utils only
+
     homeConfigurations."ovy" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [

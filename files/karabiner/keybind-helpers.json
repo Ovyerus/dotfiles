@@ -1,10 +1,22 @@
 {
-  "title": "Backspace → Meh (⌃⌥⇧) Z",
+  "title": "Colemak & Keybind Helpers",
   "rules": [
     {
       "description": "Caps Lock to Backspace",
       "manipulators": [
         {
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "MacBook internal keyboard",
+                  "vendor_id": 1452,
+                  "product_id": 641
+                }
+              ]
+            }
+          ],
           "from": {
             "key_code": "caps_lock",
             "modifiers": {
@@ -30,6 +42,18 @@
       "description": "Backspace → Meh (⌃⌥⇧) Z",
       "manipulators": [
         {
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "MacBook internal keyboard",
+                  "vendor_id": 1452,
+                  "product_id": 641
+                }
+              ]
+            }
+          ],
           "from": {
             "key_code": "delete_or_backspace",
             "modifiers": {
