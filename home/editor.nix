@@ -2,8 +2,11 @@
   config,
   pkgs,
   lib,
+  specialArgs,
   ...
-}: {
+}: let
+  desktop = specialArgs.desktop or false;
+in {
   programs.micro = {
     enable = true;
     settings = {
@@ -17,5 +20,8 @@
     };
   };
 
-  home.sessionVariables.EDITOR = "code";
+  home.sessionVariables.EDITOR =
+    if desktop
+    then "code"
+    else "micro";
 }

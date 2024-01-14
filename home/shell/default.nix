@@ -3,6 +3,7 @@
   lib,
   ...
 }: {
+  imports = [./tools.nix];
   # TODO: custom fifc rules (nix shell, nix run, ...)
   # TODO: how to customise fifc pane
   programs.fish = {
