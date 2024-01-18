@@ -32,12 +32,25 @@
         setCursor = "%";
         expansion = "git commit -m \"%\"";
       };
+      gca = "git commit --amend";
       gco = "git checkout";
       gd = "git diff HEAD";
       gl = "git log";
       gp = "git pull";
       gr = "git rebase";
       gs = "git status";
+      jctl = {
+        position = "anywhere";
+        expansion = "journalctl";
+      };
+      mctl = {
+        position = "anywhere";
+        expansion = "machinectl";
+      };
+      sctl = {
+        position = "anywhere";
+        expansion = "systemctl";
+      };
     };
 
     shellAliases = {

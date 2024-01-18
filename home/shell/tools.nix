@@ -73,8 +73,6 @@
     enableFishIntegration = false;
     settings = {
       mouse_mode = true;
-      # TODO: unsure what characters they use but the arrows are unaligned.
-      # simplified_ui = true;
       theme = "catppuccin-mocha";
       ui.pane_frames.rounded_corners = true;
       ui.pane_frames.hide_session_name = true;
