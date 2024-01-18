@@ -56,19 +56,22 @@
       # A system with an automatically managed home-manager setup (i.e. through
       # a NixOS module) is presumed by defaulto be a server of some sort, and so will
       # only get a minimal setup.
-      nixosModules.default = {
-        imports = [
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.ovy = import ./home;
-            home-manager.extraSpecialArgs = {
-              desktop = false;
-              minimal = true;
-            };
-          }
-        ];
+      nixosModules = rec {
+        dotfiles = {
+          imports = [
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.ovy = import ./home;
+              home-manager.extraSpecialArgs = {
+                desktop = false;
+                minimal = true;
+              };
+            }
+          ];
+        };
+        default = dotfiles;
       };
       # TODO: nix-darwin module (when I have a darwin server to manage perhaps)?
     };
