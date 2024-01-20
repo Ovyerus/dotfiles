@@ -10,6 +10,7 @@
     fd
     jq
     moar
+    nix-your-shell
     ripgrep
   ];
 }

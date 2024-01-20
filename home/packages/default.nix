@@ -18,7 +18,6 @@
     magic-wormhole-rs
     minisign
     mtr
-    nix-your-shell
     pgcli
     rage
     xh
