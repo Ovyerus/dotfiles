@@ -16,6 +16,7 @@
     lazydocker
     macchina
     magic-wormhole-rs
+    mix2nix
     minisign
     mtr
     pgcli
