@@ -1,0 +1,29 @@
+{pkgs, ...}: {
+  # Misc packages
+  home.packages = with pkgs; [
+    age-plugin-yubikey
+    alejandra
+    cachix
+    colmena
+    hexyl
+    lazydocker
+    macchina
+    mix2nix
+    minisign
+    mtr
+    pgcli
+    rage
+    xh
+  ];
+
+  programs.ssh = {
+    enable = true;
+    matchBlocks."*" = {
+      identitiesOnly = true;
+      identityFile = "~/.ssh/id_ed25519_sk_rk";
+      user = "ovy";
+    };
+  };
+
+  home.sessionVariables.EDITOR = "code";
+}

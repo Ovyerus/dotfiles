@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  xdg.configFile."git/allowed_signers".source = ../files/git/allowed_signers;
+  xdg.configFile."git/allowed_signers".source = ../../files/git/allowed_signers;
 
   programs.git = {
     enable = true;

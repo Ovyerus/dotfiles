@@ -3,6 +3,17 @@
   lib,
   ...
 }: {
+  # Core CLI tools
+  home.packages = with pkgs; [
+    du-dust
+    duf
+    fd
+    jq
+    moar
+    nix-your-shell
+    ripgrep
+  ];
+
   programs.aria2.enable = true;
 
   programs.bat = {
@@ -25,6 +36,7 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    # TODO: use a home manager var
     config.whitelist.prefix = [
       "/Users/ovy/Projects/personal"
       "/Users/ovy/Projects/bots-gg"
@@ -56,6 +68,19 @@
     defaultCommand = "fd --color=always --type file --follow --hidden --exclude .git --exclude node_modules";
   };
   home.sessionVariables.FZF_CTRL_T_COMMAND = "fd --color=always --follow";
+
+  programs.micro = {
+    enable = true;
+    settings = {
+      clipboard = "external";
+      hlsearch = true;
+      parsecursor = true;
+      scrollbar = true;
+      tabmovement = true;
+      tabsize = 2;
+      tabstospaces = true;
+    };
+  };
 
   programs.nix-index.enable = true;
 

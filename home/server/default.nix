@@ -1,9 +1,10 @@
 {...}: {
-  imports = [./apps.nix ../common/cli.nix ../common/git.nix ../common/shell];
+  imports = [../common/shell];
+  home.sessionVariables.EDITOR = "micro";
 
   news.display = "silent";
   programs.home-manager.enable = true;
   home.homeDirectory = "/home/ovy";
   home.username = "ovy";
-  home.stateVersion = "24.05";
+  home.stateVersion = "23.05";
 }
