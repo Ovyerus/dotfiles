@@ -4,7 +4,10 @@
   lib,
   ...
 }: {
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    nativeMessagingHosts = [pkgs.kdePackages.plasma-browser-integration];
+  };
 
   home.packages = with pkgs; [
     alejandra
@@ -12,6 +15,7 @@
     bitwarden-desktop
     blender
     davinci-resolve
+    feishin
     gajim
     handbrake
     httpie-desktop
@@ -26,6 +30,7 @@
     piper
     # plasticity
     prismlauncher
+    syncthingtray
     thunderbird
     vesktop
     vorta
@@ -36,9 +41,8 @@
 
   services.syncthing = {
     enable = true;
-    extraOptions = [];
     tray.enable = true;
-    tray.package = pkgs.qsyncthingtray;
+    tray.package = pkgs.syncthingtray;
   };
 
   #programs.vscode = {
