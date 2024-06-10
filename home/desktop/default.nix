@@ -1,5 +1,5 @@
 {...}: {
-  imports = [./apps.nix ../common/cli.nix ../common/git.nix ../common/shell];
+  imports = [./apps.nix ./xdg.nix ../common/cli.nix ../common/git.nix ../common/shell];
 
   news.display = "silent";
   programs.home-manager.enable = true;
