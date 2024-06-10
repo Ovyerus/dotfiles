@@ -4,6 +4,7 @@
     age-plugin-yubikey
     alejandra
     cachix
+    curlie
     colmena
     hexyl
     lazydocker

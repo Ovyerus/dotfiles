@@ -42,6 +42,8 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
+  # services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.defaultSession = "plasmax11"; # Set to `plasma` for Wayland.
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
@@ -82,8 +84,18 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
   services.ratbagd.enable = true;
+
+  nix.settings = {
+    auto-optimise-store = true;
+    experimental-features = ["nix-command" "flakes"];
+  };
+
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 14d";
+    dates = "weekly";
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -138,6 +150,7 @@
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?
