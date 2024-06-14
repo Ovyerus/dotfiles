@@ -109,9 +109,11 @@
   ];
 
   programs.fish.enable = true;
-
   # services.mullvad-vpn.enable = true;
+
   fonts.packages = [
+    pkgs.ubuntu_font_family
+    pkgs.liberation_ttf
     pkgs.inter
     (pkgs.stdenv.mkDerivation
       {
@@ -151,6 +153,12 @@
     enable = true;
     remotePlay.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
+  };
+
+  # virtualisation.oci-containers.backend = "podman";
+  virtualisation.podman = {
+    enable = true;
+    defaultNetwork.settings.dns_enabled = true;
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?

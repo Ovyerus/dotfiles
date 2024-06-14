@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: {
   # Core CLI tools
@@ -36,10 +37,9 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-    # TODO: use a home manager var
     config.whitelist.prefix = [
-      "/Users/ovy/Projects/personal"
-      "/Users/ovy/Projects/bots-gg"
+      "${config.home.homeDirectory}/Projects/personal"
+      "${config.home.homeDirectory}/Projects/bots-gg"
     ];
   };
 

@@ -14,9 +14,11 @@
     audacity
     bitwarden-desktop
     blender
+    boxbuddy
     # TODO: would love to use bottles but installing dotnet48/35 isn't working correctly.
     # bottles
     davinci-resolve
+    distrobox
     feishin
     gajim
     handbrake
@@ -33,6 +35,7 @@
     piper
     # plasticity
     prismlauncher
+    slack
     syncthingtray
     thunderbird
     vesktop
