@@ -38,6 +38,9 @@
   {
     nixosConfigurations.wallsocket = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = {
+        nixpkgsNarhash = nixpkgs.narHash;
+      };
       modules = [
         ./nixos/wallsocket/configuration.nix
         nix-index-database.nixosModules.nix-index

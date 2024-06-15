@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  specialArgs,
+  ...
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -97,6 +101,15 @@
     dates = "weekly";
   };
 
+  # Make sure that the `nixpkgs` reference on the CLI refers to the system
+  # nixpkgs so that it does not keep re-downloading the latest version every
+  # time I want to run a single package
+  nix.registry.nixpkgs.to = {
+    type = "path";
+    path = pkgs.path;
+    narHash = specialArgs.nixpkgsNarhash;
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -153,7 +166,10 @@
     enable = true;
     remotePlay.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
+    gamescopeSession.enable = true;
   };
+
+  programs.gamescope.enable = true;
 
   # virtualisation.oci-containers.backend = "podman";
   virtualisation.podman = {
