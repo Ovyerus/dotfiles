@@ -2,8 +2,12 @@
   description = "Home Manager configuration of ovy";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -14,14 +18,20 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    iosevka-solai = {
+      url = "github:ovyerus/iosevka-solai";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     home-manager,
+    nix-darwin,
     nix-index-database,
     nixpkgs,
     ...
-  }:
+  } @ inputs:
   # systems = ["aarch64-darwin" "x86_64-darwin" "aarch64-linux" "x86_64-linux"];
   # hm = {
   #   system,
@@ -38,9 +48,7 @@
   {
     nixosConfigurations.wallsocket = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {
-        nixpkgsNarhash = nixpkgs.narHash;
-      };
+      specialArgs = {inherit inputs;};
       modules = [
         ./nixos/wallsocket/configuration.nix
         nix-index-database.nixosModules.nix-index
@@ -51,6 +59,20 @@
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
           home-manager.users.ovy = import ./home/desktop;
+        }
+      ];
+    };
+
+    darwinConfigurations.shimmer = nix-darwin.lib.darwinSystem {
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./darwin/shimmer/configuration.nix
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
+          home-manager.users.ovy = import ./home/darwin;
         }
       ];
     };

@@ -107,7 +107,7 @@
   nix.registry.nixpkgs.to = {
     type = "path";
     path = pkgs.path;
-    narHash = specialArgs.nixpkgsNarhash;
+    narHash = specialArgs.inputs.nixpkgs.narHash;
   };
 
   # List packages installed in system profile. To search, run:
