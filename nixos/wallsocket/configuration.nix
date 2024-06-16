@@ -11,13 +11,9 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernel.sysctl."vm.max_map_count" = 2147483642;
 
-  networking.hostName = "wallsocket"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  networking.hostName = "wallsocket";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -69,16 +65,8 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ovy = {
     isNormalUser = true;
     description = "Ashlynne Mitchell";
@@ -128,32 +116,7 @@
     pkgs.ubuntu_font_family
     pkgs.liberation_ttf
     pkgs.inter
-    (pkgs.stdenv.mkDerivation
-      {
-        name = "iosevka-solai";
-        src = pkgs.fetchzip {
-          url = "https://github.com/Ovyerus/iosevka-solai/releases/download/v1.0.0/iosevka-solai.tar.gz";
-          hash = "sha256-Gto5YjSzMXT/aUweZK5WsLP3TKTdib/+V5Q5PN8A0+4=";
-        };
-        phases = ["installPhase" "patchPhase"];
-        installPhase = ''
-          mkdir -p $out/share
-          cp -r $src/fonts $out/share/
-        '';
-      })
-    (pkgs.stdenv.mkDerivation
-      {
-        name = "iosevka-solai-term";
-        src = pkgs.fetchzip {
-          url = "https://github.com/Ovyerus/iosevka-solai/releases/download/v1.0.0/iosevka-solai-term.tar.gz";
-          hash = "sha256-e5PU7pQXQaIJlEDhxfgWOKSZu1bCiBztcZ5Gbx/ibj4=";
-        };
-        phases = ["installPhase" "patchPhase"];
-        installPhase = ''
-          mkdir -p $out/share
-          cp -r $src/fonts $out/share/
-        '';
-      })
+    specialArgs.inputs.iosevka-solai.packages.x86_64-linux.bin
   ];
 
   services.tailscale = {

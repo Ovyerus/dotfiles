@@ -12,6 +12,7 @@
   home.packages = with pkgs; [
     alejandra
     audacity
+    betterbird
     bitwarden-desktop
     blender
     boxbuddy
@@ -38,7 +39,6 @@
     prismlauncher
     slack
     syncthingtray
-    thunderbird
     vesktop
     vorta
     vscode
