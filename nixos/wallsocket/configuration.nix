@@ -42,8 +42,8 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  # services.displayManager.sddm.wayland.enable = true;
-  services.displayManager.defaultSession = "plasmax11"; # Set to `plasma` for Wayland.
+  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.defaultSession = "plasma"; # Set to `plasma` for Wayland.
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
@@ -143,6 +143,12 @@
 
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
+
+  qt = {
+    enable = true;
+    style = "kvantum";
+    platformTheme = "kde";
+  };
 
   system.stateVersion = "24.05"; # Did you read the comment?
 }
