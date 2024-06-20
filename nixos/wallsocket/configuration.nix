@@ -70,7 +70,7 @@
   users.users.ovy = {
     isNormalUser = true;
     description = "Ashlynne Mitchell";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "libvirtd"];
     shell = pkgs.fish;
   };
 
@@ -103,6 +103,7 @@
   environment.systemPackages = with pkgs; [
     ffmpeg_6-full
     git
+    kde-rounded-corners
     nil
     openssh
     wget
@@ -129,7 +130,7 @@
     enable = true;
     remotePlay.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
-    gamescopeSession.enable = true;
+    extraCompatPackages = [pkgs.proton-ge-bin];
   };
 
   programs.gamescope.enable = true;
@@ -139,6 +140,9 @@
     enable = true;
     defaultNetwork.settings.dns_enabled = true;
   };
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   system.stateVersion = "24.05"; # Did you read the comment?
 }

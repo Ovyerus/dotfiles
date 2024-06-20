@@ -17,7 +17,7 @@
     blender
     boxbuddy
     # TODO: would love to use bottles but installing dotnet48/35 isn't working correctly.
-    # bottles
+    bottles
     davinci-resolve
     distrobox
     feishin
@@ -26,6 +26,7 @@
     handbrake
     httpie-desktop
     libreoffice
+    lunacy
     mpv
     mpvScripts.uosc
     obs-studio
