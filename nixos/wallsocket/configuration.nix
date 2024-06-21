@@ -98,8 +98,7 @@
     narHash = specialArgs.inputs.nixpkgs.narHash;
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  environment.sessionVariables."MOZ_ENABLE_WAYLAND" = 0;
   environment.systemPackages = with pkgs; [
     ffmpeg_6-full
     git
@@ -119,6 +118,19 @@
     pkgs.inter
     specialArgs.inputs.iosevka-solai.packages.x86_64-linux.bin
   ];
+
+  # Wait for Aetf/kmscon#75 to merge, and then look into manually updating the package to test.
+  # Potentially open a nixpkgs PR to do so?
+
+  # services.kmscon = {
+  #   enable = true;
+  #   fonts = [
+  #     {
+  #       name = "Iosevka Solai Term";
+  #       package = specialArgs.inputs.iosevka-solai.packages.x86_64-linux.bin-term;
+  #     }
+  #   ];
+  # };
 
   services.tailscale = {
     enable = true;
