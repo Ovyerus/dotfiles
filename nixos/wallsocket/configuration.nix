@@ -41,10 +41,26 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
+  services.displayManager.enable = true;
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.displayManager.defaultSession = "plasma"; # Set to `plasma` for Wayland.
   services.desktopManager.plasma6.enable = true;
+
+  # programs.niri = {
+  #   enable = true;
+  #   package = pkgs.niri;
+  # };
+
+  # services.greetd = {
+  #   enable = true;
+  #   settings = {
+  #     default_session = {
+  #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri-session -r --window-padding 4";
+  #       user = "greeter";
+  #     };
+  #   };
+  # };
 
   # Configure keymap in X11
   services.xserver = {
@@ -102,12 +118,50 @@
   environment.systemPackages = with pkgs; [
     ffmpeg_6-full
     git
-    kde-rounded-corners
+    keymapp
     nil
+    niri
     openssh
     wget
     p7zip
+    # wl-clipboard
+    # kitty
+    # alacritty
+    # fuzzel
+    # swaylock
+    # libsecret
+    # wayland-utils
+    # swaynotificationcenter
   ];
+
+  # Allow `keymapp` to control my ZSA Moonlander
+  # https://github.com/zsa/wally/wiki/Linux-install#2-create-a-udev-rule-file
+  services.udev.extraRules = ''
+    # Rules for Oryx web flashing and live training
+    KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
+    KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
+
+    # Legacy rules for live training over webusb (Not needed for firmware v21+)
+      # Rule for all ZSA keyboards
+      SUBSYSTEM=="usb", ATTR{idVendor}=="3297", GROUP="plugdev"
+      # Rule for the Moonlander
+      SUBSYSTEM=="usb", ATTR{idVendor}=="3297", ATTR{idProduct}=="1969", GROUP="plugdev"
+      # Rule for the Ergodox EZ
+      SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="1307", GROUP="plugdev"
+      # Rule for the Planck EZ
+      SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="6060", GROUP="plugdev"
+
+    # Wally Flashing rules for the Ergodox EZ
+    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", ENV{ID_MM_DEVICE_IGNORE}="1"
+    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?", ENV{MTP_NO_PROBE}="1"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666"
+    KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:="0666"
+
+    # Keymapp / Wally Flashing rules for the Moonlander and Planck EZ
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE:="0666", SYMLINK+="stm32_dfu"
+    # Keymapp Flashing rules for the Voyager
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
+  '';
 
   programs.fish.enable = true;
   # services.mullvad-vpn.enable = true;
