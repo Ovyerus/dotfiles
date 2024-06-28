@@ -92,7 +92,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  services.ratbagd.enable = true;
 
   nix.settings = {
     auto-optimise-store = true;
@@ -101,7 +100,7 @@
 
   nix.gc = {
     automatic = true;
-    options = "--delete-older-than 14d";
+    options = "--delete-older-than 10d";
     dates = "weekly";
   };
 
@@ -122,6 +121,7 @@
     nil
     niri
     openssh
+    solaar
     wget
     p7zip
     # wl-clipboard
