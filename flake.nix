@@ -69,5 +69,11 @@
         }
       ];
     };
+
+    packages.x86_64-linux = let
+      pkgs = import nixpkgs {system = "x86_64-linux";};
+    in {
+      xwayland-satellite = pkgs.callPackage ./packages/xwayland-satellite.nix {};
+    };
   };
 }
