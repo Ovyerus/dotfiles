@@ -28,10 +28,16 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0-rc1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     home-manager,
+    lix-module,
     niri-flake,
     nix-darwin,
     nix-index-database,
@@ -45,6 +51,7 @@
         ./nixos/wallsocket/configuration.nix
         niri-flake.nixosModules.niri
         nix-index-database.nixosModules.nix-index
+        lix-module.nixosModules.default
         home-manager.nixosModules.home-manager
         {
           programs.command-not-found.enable = false;
