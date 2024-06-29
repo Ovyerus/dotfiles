@@ -6,6 +6,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./bluetooth.nix
   ];
 
   # Bootloader.
@@ -126,7 +127,6 @@
     p7zip
     # wl-clipboard
     # kitty
-    # alacritty
     # fuzzel
     # swaylock
     # libsecret
