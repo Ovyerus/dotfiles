@@ -12,6 +12,7 @@
     mix2nix
     minisign
     mtr
+    nix-output-monitor
     pgcli
     rage
     xh
