@@ -5,17 +5,13 @@
   pkgs,
   ...
 }: {
-  imports = [./homebrew.nix ./wm.nix];
+  imports = [./homebrew.nix ./wm.nix ../../modules/nixpkgs.nix];
 
-  nixpkgs = {
-    hostPlatform = "aarch64-darwin";
-    config.allowUnfree = true;
-  };
+  nixpkgs.hostPlatform = "aarch64-darwin";
 
   # Nix setup
   services.nix-daemon.enable = true;
   nix.distributedBuilds = true;
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   nix.gc = {
     automatic = true;

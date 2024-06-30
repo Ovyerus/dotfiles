@@ -1,12 +1,13 @@
 {
   pkgs,
-  specialArgs,
+  inputs,
   ...
 }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./bluetooth.nix
+    ../../modules/nixpkgs.nix
   ];
 
   # Bootloader.
@@ -91,9 +92,6 @@
     shell = pkgs.fish;
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   nix.settings = {
     auto-optimise-store = true;
     experimental-features = ["nix-command" "flakes"];
@@ -103,15 +101,6 @@
     automatic = true;
     options = "--delete-older-than 10d";
     dates = "weekly";
-  };
-
-  # Make sure that the `nixpkgs` reference on the CLI refers to the system
-  # nixpkgs so that it does not keep re-downloading the latest version every
-  # time I want to run a single package
-  nix.registry.nixpkgs.to = {
-    type = "path";
-    path = pkgs.path;
-    narHash = specialArgs.inputs.nixpkgs.narHash;
   };
 
   environment.sessionVariables."MOZ_ENABLE_WAYLAND" = 0;
@@ -170,7 +159,7 @@
     pkgs.ubuntu_font_family
     pkgs.liberation_ttf
     pkgs.inter
-    specialArgs.inputs.iosevka-solai.packages.x86_64-linux.bin
+    inputs.iosevka-solai.packages.x86_64-linux.bin
   ];
 
   # Wait for Aetf/kmscon#75 to merge, and then look into manually updating the package to test.
@@ -181,7 +170,7 @@
   #   fonts = [
   #     {
   #       name = "Iosevka Solai Term";
-  #       package = specialArgs.inputs.iosevka-solai.packages.x86_64-linux.bin-term;
+  #       package = inputs.iosevka-solai.packages.x86_64-linux.bin-term;
   #     }
   #   ];
   # };

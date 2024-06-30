@@ -9,7 +9,6 @@
 
   homebrew.brews = [
     "bitwarden-cli"
-    "borgbackup"
     "klog"
     "mas"
   ];
@@ -26,7 +25,7 @@
     # Actually searches symlinks for apps, compared to Alfred.
     "raycast"
     "visual-studio-code"
-    "vorta"
+    # "vorta"
   ];
 
   homebrew.masApps = {

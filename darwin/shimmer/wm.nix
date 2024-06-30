@@ -18,8 +18,6 @@
       {
         layout = "bsp";
         window_placement = "second_child";
-        # TODO: decide on bar (make own bottom one???).
-        # external_bar = "all:45:0";
       }
       // gaps;
     extraConfig = ''
