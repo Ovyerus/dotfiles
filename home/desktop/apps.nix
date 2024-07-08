@@ -15,9 +15,8 @@
     betterbird
     bitwarden-desktop
     blender
-    boxbuddy
-    # TODO: would love to use bottles but installing dotnet48/35 isn't working correctly.
     bottles
+    celluloid
     davinci-resolve
     distrobox
     feishin
@@ -25,10 +24,10 @@
     godot_4
     handbrake
     httpie-desktop
+    klog-time-tracker
     libreoffice
     lunacy
     mpv
-    mpvScripts.uosc
     obs-studio
     obsidian
     orca-slicer
