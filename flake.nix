@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nur.url = "github:nix-community/NUR";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -81,6 +82,7 @@
       pkgs = import nixpkgs {system = "x86_64-linux";};
     in {
       xwayland-satellite = pkgs.callPackage ./packages/xwayland-satellite.nix {};
+      ts-systray = pkgs.callPackage ./packages/ts-systray.nix {};
     };
   };
 }
