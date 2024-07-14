@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  imports = [./apps.nix ./xdg.nix ../common/cli.nix ../common/git.nix ../common/shell];
+  imports = [./apps.nix ./xdg.nix ../common/cli.nix ../common/git.nix ../common/nixpkgs.nix ../common/shell];
 
   # TODO: give a standalone file
   programs.niri.settings = with config.lib.niri.actions; {

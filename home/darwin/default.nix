@@ -1,5 +1,5 @@
 {lib, ...}: {
-  imports = [./configs.nix ../common/cli.nix ../common/git.nix ../common/shell];
+  imports = [./configs.nix ../common/cli.nix ../common/git.nix ../common/nixpkgs.nix ../common/shell];
 
   programs.ssh.includes = ["~/.orbstack/ssh/config"];
 
