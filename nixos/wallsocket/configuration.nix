@@ -114,6 +114,7 @@
     solaar
     wget
     p7zip
+    kdePackages.kcalc
     # wl-clipboard
     # kitty
     # fuzzel
@@ -174,6 +175,8 @@
   #     }
   #   ];
   # };
+
+  services.pcscd.enable = true;
 
   services.tailscale = {
     enable = true;
