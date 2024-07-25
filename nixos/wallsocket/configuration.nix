@@ -107,6 +107,7 @@ in {
 
   environment.sessionVariables."MOZ_ENABLE_WAYLAND" = 0;
   environment.systemPackages = with pkgs; [
+    docker-compose
     ffmpeg_6-full
     git
     keymapp

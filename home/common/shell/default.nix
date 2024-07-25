@@ -24,6 +24,13 @@
       fzf_configure_bindings --directory=\cf --git_log=\cl --git_status=\cs --processes=\cp
 
       nix-your-shell fish | source
+
+      # Docker compose alias that switches to if the standalone binary is present.
+      if which docker-compose;
+        alias dc docker-compose;
+      else;
+        alias dc "docker compose";
+      end;
     '';
 
     shellAbbrs = {
@@ -57,7 +64,6 @@
     shellAliases = {
       cat = "bat";
       ls = "eza";
-      dc = "docker compose";
       hm = "home-manager";
       ncg = "nix-collect-garbage";
       yws = "yarn workspace";
