@@ -26,7 +26,7 @@
       nix-your-shell fish | source
 
       # Docker compose alias that switches to if the standalone binary is present.
-      if which docker-compose;
+      if which docker-compose &> /dev/null;
         alias dc docker-compose;
       else;
         alias dc "docker compose";
