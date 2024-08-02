@@ -14,7 +14,7 @@
     extraConfig = {
       # TODO: custom pretty stuff?
       blame.showEmail = true;
-      core.editor = "code --wait";
+      # core.editor = "code --wait";
       init.defaultBranch = "main";
       pull.rebase = true;
 

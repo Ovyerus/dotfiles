@@ -27,5 +27,5 @@
     };
   };
 
-  home.sessionVariables.EDITOR = "code";
+  home.sessionVariables.EDITOR = "code --wait";
 }
