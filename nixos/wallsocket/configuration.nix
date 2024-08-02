@@ -3,7 +3,7 @@
   inputs,
   ...
 }: let
-  tailscale-systray = pkgs.callPackage ../../packages/ts-systray.nix {};
+  # tailscale-systray = pkgs.callPackage ../../packages/ts-systray.nix {};
 in {
   imports = [
     # Include the results of the hardware scan.
@@ -118,7 +118,7 @@ in {
     wget
     p7zip
     kdePackages.kcalc
-    tailscale-systray
+    # tailscale-systray
     # wl-clipboard
     # kitty
     # fuzzel
