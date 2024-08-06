@@ -60,6 +60,7 @@
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
           home-manager.users.ovy = import ./home/desktop;
+          home-manager.extraSpecialArgs = {inherit inputs;};
         }
       ];
     };
@@ -74,6 +75,7 @@
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
           home-manager.users.ovy = import ./home/darwin;
+          home-manager.extraSpecialArgs = {inherit inputs;};
         }
       ];
     };
@@ -83,6 +85,13 @@
     in {
       xwayland-satellite = pkgs.callPackage ./packages/xwayland-satellite.nix {};
       ts-systray = pkgs.callPackage ./packages/ts-systray.nix {};
+    };
+
+    formatter = {
+      aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.alejandra;
+      aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
+      x86_64-darwin = nixpkgs.legacyPackages.x86_64-darwin.alejandra;
+      x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
     };
   };
 }

@@ -4,61 +4,26 @@
   lib,
   ...
 }: {
-  # programs.librewolf.enable = true;
-  # TODO: use librewolf (waiting on configuration support like Firefox)
   programs.firefox = {
     enable = true;
     nativeMessagingHosts = [pkgs.kdePackages.plasma-browser-integration];
-    # policies = {
-    #   AutofillAddressEnabled = false;
-    #   AutofillCreditCardEnabled = false;
-    #   OfferToSaveLogins = false;
-    #   PasswordManagerEnabled = false;
-    # };
-    # profiles.ovyerus = {
-    #   # TODO: arc theme
-    #   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-    #     # TODO: go through addons page
-    #     bitwarden
-    #     # cookie-quick-manager
-    #     indie-wiki-budy
-    #     ipvfoo
-    #     sidebery
-    #     simple-translate
-    #     ublock-origin
-    #     userchrome-toggle
-    #     violentmonkey
-    #     web-scrobbler
+  };
 
-    #     # - Missing -
-    #     # activist-soft (theme)
-    #     # ambient-light-for-youtube
-    #     # imagus-mod
-    #   ];
-    #   settings = {
-    #     "browser.bookmarks.restore_default_bookmarks" = false;
-    #     "browser.contentblocking.category" = "standard";
-    #     "browser.formfill.enable" = false;
-    #     "browser.toolbars.bookmarks.visibility" = "never";
-    #     "browser.urlbar.placeholderName" = "Google";
-    #     "browser.urlbar.suggest.openpage" = false;
-    #     "extensions.getAddons.showPane" = false;
-    #     "extensions.htmlaboutaddons.recommendations.enabled" = false;
-    #     "extensions.pocket.enabled" = false;
-    #     "findbar.highlightAll" = true;
-    #     "general.autoScroll" = true;
-    #     "gfx.webrender.all" = true;
-    #     "gfx.x11-egl.force-enabled" = true;
-    #     "media.av1.enabled" = false;
-    #     "media.ffmpeg.vaapi.enabled" = true;
-    #     "uc.tweak.hide-forward-button" = true;
-    #     "uc.tweak.loonger-sidebar" = true;
-    #     "uc.tweak.popup-search" = true;
-    #     # Nvidia bullshit
-    #     "webgl.force-enabled" = true;
-    #     "widget.dmabuf.force-enabled" = true;
-    #   };
-    # };
+  programs.chromium = {
+    enable = true;
+    package = pkgs.vivaldi.overrideAttrs (finalAttrs: previousAttrs: {
+      dontWrapQtApps = false;
+      dontPatchELF = true;
+      nativeBuildInputs = previousAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
+    });
+    extensions = [
+      {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
+      {id = "hhinaapppaileiechjoiifaancjggfjm";} # Web Scrobbler
+      {id = "jinjaccalgkegednnccohejagnlnfdag";} # Violentmonkey
+      {id = "fkagelmloambgokoeokbpihmgpkbgbfm";} # Indie Wiki Buddy
+      {id = "paponcgjfojgemddooebbgniglhkajkj";} # Ambient light for YouTube
+      {id = "immpkjjlgappgfkkfieppnmlhakdmaab";} # Imagus (TODO: find alternative?)
+    ];
   };
 
   home.packages = with pkgs; [
