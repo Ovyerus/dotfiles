@@ -6,9 +6,9 @@
   # tailscale-systray = pkgs.callPackage ../../packages/ts-systray.nix {};
 in {
   imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
     ./bluetooth.nix
+    ./graphics.nix
+    ./hardware-configuration.nix
     ../../modules/nixpkgs.nix
   ];
 
