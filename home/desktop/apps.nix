@@ -3,7 +3,14 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  vivaldi = pkgs.vivaldi.override {
+    proprietaryCodecs = true;
+    enableWidevine = true;
+    vivaldi-ffmpeg-codecs = pkgs.vivaldi-ffmpeg-codecs;
+    widevine-cdm = pkgs.widevine-cdm;
+  };
+in {
   programs.firefox = {
     enable = true;
     nativeMessagingHosts = [pkgs.kdePackages.plasma-browser-integration];
@@ -11,12 +18,12 @@
 
   programs.chromium = {
     enable = true;
-    package = pkgs.vivaldi.overrideAttrs (finalAttrs: previousAttrs: {
+    package = vivaldi.overrideAttrs (finalAttrs: previousAttrs: {
       dontWrapQtApps = false;
       dontPatchELF = true;
       nativeBuildInputs = previousAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
     });
-    commandLineArgs = ["--enable-blink-features=MiddleClickAutoscroll"];
+    commandLineArgs = ["--enable-blink-features=MiddleClickAutoscroll" "--enable-features=VaapiVideoDecoder"];
     extensions = [
       {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
       {id = "hhinaapppaileiechjoiifaancjggfjm";} # Web Scrobbler
@@ -30,10 +37,11 @@
   home.packages = with pkgs; [
     alejandra
     audacity
-    betterbird
+    # betterbird
     bitwarden-desktop
     blender
     bottles
+    bruno
     celluloid
     davinci-resolve
     distrobox
@@ -41,7 +49,6 @@
     gajim
     godot_4
     handbrake
-    httpie-desktop
     klog-time-tracker
     libreoffice
     lunacy
@@ -223,6 +230,23 @@
       "window.titleBarStyle" = "custom";
       "files.simpleDialog.enable" = true;
       "window.dialogStyle" = "custom";
+    };
+  };
+
+  programs.mangohud = {
+    enable = true;
+    settings = {
+      cpu_temp = true;
+      cpu_mhz = true;
+      cpu_power = true;
+      core_load = true;
+      gpu_core_clock = true;
+      gpu_temp = true;
+      gpu_power = true;
+      gpu_fan = true;
+      gpu_voltage = true;
+      vram = true;
+      ram = true;
     };
   };
 }
