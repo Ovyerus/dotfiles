@@ -59,7 +59,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users.ovy = import ./home/desktop;
+          home-manager.users.ovy = import ./home/desktop; # TODO: module loading
           home-manager.extraSpecialArgs = {inherit inputs;};
         }
       ];
@@ -83,7 +83,6 @@
     packages.x86_64-linux = let
       pkgs = import nixpkgs {system = "x86_64-linux";};
     in {
-      xwayland-satellite = pkgs.callPackage ./packages/xwayland-satellite.nix {};
       ts-systray = pkgs.callPackage ./packages/ts-systray.nix {};
     };
 
