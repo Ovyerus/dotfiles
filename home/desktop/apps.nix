@@ -3,14 +3,7 @@
   pkgs,
   lib,
   ...
-}: let
-  vivaldi = pkgs.vivaldi.override {
-    proprietaryCodecs = true;
-    enableWidevine = true;
-    vivaldi-ffmpeg-codecs = pkgs.vivaldi-ffmpeg-codecs;
-    widevine-cdm = pkgs.widevine-cdm;
-  };
-in {
+}: {
   programs.firefox = {
     enable = true;
     nativeMessagingHosts = [pkgs.kdePackages.plasma-browser-integration];
@@ -18,7 +11,7 @@ in {
 
   programs.chromium = {
     enable = true;
-    package = vivaldi.overrideAttrs (finalAttrs: previousAttrs: {
+    package = pkgs.vivaldi.overrideAttrs (finalAttrs: previousAttrs: {
       dontWrapQtApps = false;
       dontPatchELF = true;
       nativeBuildInputs = previousAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
@@ -249,4 +242,5 @@ in {
       ram = true;
     };
   };
+  home.sessionVariables.MANGOHUD_CONFIGFILE = "${config.xdg.configHome}/MangoHud/MangoHud.conf";
 }

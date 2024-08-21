@@ -116,16 +116,15 @@ in {
     openssh
     solaar
     wget
+    wcurl
     p7zip
     kdePackages.kcalc
     # tailscale-systray
     # wl-clipboard
     # kitty
-    # fuzzel
     # swaylock
     # libsecret
     # wayland-utils
-    # swaynotificationcenter
   ];
 
   # Allow `keymapp` to control my ZSA Moonlander
@@ -181,6 +180,7 @@ in {
   # };
 
   services.pcscd.enable = true;
+  services.fwupd.enable = true;
 
   services.tailscale = {
     enable = true;
@@ -196,6 +196,7 @@ in {
   };
 
   programs.gamescope.enable = true;
+  programs.gamemode.enable = true;
 
   # virtualisation.oci-containers.backend = "podman";
   virtualisation.podman = {

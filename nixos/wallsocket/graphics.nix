@@ -2,7 +2,7 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = [pkgs.amdvlk];
+    # extraPackages = [pkgs.amdvlk];
   };
 
   environment.systemPackages = [pkgs.lact];
