@@ -53,6 +53,7 @@
     picard
     pinta
     piper
+    podman-tui
     # plasticity
     prismlauncher
     slack
