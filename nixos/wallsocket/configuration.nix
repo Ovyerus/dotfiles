@@ -2,9 +2,7 @@
   pkgs,
   inputs,
   ...
-}: let
-  # tailscale-systray = pkgs.callPackage ../../packages/ts-systray.nix {};
-in {
+}: {
   imports = [
     ./bluetooth.nix
     ./graphics.nix

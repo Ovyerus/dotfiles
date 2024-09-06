@@ -80,11 +80,11 @@
       ];
     };
 
-    packages.x86_64-linux = let
-      pkgs = import nixpkgs {system = "x86_64-linux";};
-    in {
-      ts-systray = pkgs.callPackage ./packages/ts-systray.nix {};
-    };
+    # packages.x86_64-linux = let
+    #   pkgs = import nixpkgs {system = "x86_64-linux";};
+    # in {
+    #   ts-systray = pkgs.callPackage ./packages/ts-systray.nix {};
+    # };
 
     formatter = {
       aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.alejandra;
