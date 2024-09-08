@@ -146,7 +146,7 @@
       "workbench.colorTheme" = "Dolch";
       "workbench.iconTheme" = "chalice-icon-theme";
       "editor.fontFamily" = "'Iosevka Solai', Menlo, Monaco, 'Courier New', monospace";
-      "editor.fontSize" = 14;
+      "editor.fontSize" = 16;
       "terminal.integrated.fontFamily" = "'Iosevka Solai Term', Consolas, 'Courier New', monospace";
       "terminal.integrated.fontSize" = 14;
       "terminal.integrated.scrollback" = 9999999999;
