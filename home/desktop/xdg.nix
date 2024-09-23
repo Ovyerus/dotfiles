@@ -1,9 +1,13 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   vivalarc = pkgs.fetchFromGitHub {
     owner = "tovifun";
     repo = "VivalArc";
-    rev = "ea376fae175f456d75f1e6511979661d8950944f";
-    hash = "sha256-7BIezjwJYj8oFJ+7yhUR12QFGwHa0d5Z8efqike60ZM=";
+    rev = "7ee09e9efb46c1524a43f0cb6763b9750db6e81c";
+    hash = "sha256-xYSxB8KjcbeUDEdbA2AJ9FeQC1TkqyXdB9rTMMSm+FA=";
   };
 in {
   xdg.desktopEntries.davinci-resolve = {
