@@ -40,6 +40,7 @@
     distrobox
     feishin
     gajim
+    glaxnimate
     godot_4
     handbrake
     klog-time-tracker
