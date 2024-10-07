@@ -13,6 +13,7 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_10;
 
   hardware.logitech.wireless.enable = true;
 
