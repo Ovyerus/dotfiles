@@ -22,13 +22,14 @@
   nix.settings = {
     auto-optimise-store = true;
     builders-use-substitutes = true;
-    experimental-features = "nix-command flakes repl-flake";
+    experimental-features = "nix-command flakes";
     trusted-users = ["root" "ovy"];
   };
 
   environment.systemPackages = with pkgs; [
     ffmpeg_6-full
     git
+    imagemagick
     nil
     obsidian
     openssh

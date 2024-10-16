@@ -17,6 +17,7 @@
       "bitwarden-cli"
       "klog"
       "mas"
+      "swiftformat"
     ];
 
     casks = [
@@ -24,12 +25,13 @@
       "figma"
       "httpie"
       "insomnia"
-      "iterm2-beta"
+      "iterm2"
       "karabiner-elements"
       "maccy"
       "orbstack"
       # Actually searches symlinks for apps, compared to Alfred.
       "raycast"
+      "swiftformat-for-xcode"
       "visual-studio-code"
       # "vorta"
     ];
