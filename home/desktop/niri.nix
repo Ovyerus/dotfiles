@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: {
+  # programs.niri.enable = true;
   programs.niri.package = pkgs.niri;
 
   programs.niri.settings = {
@@ -27,13 +28,13 @@
     prefer-no-csd = true;
 
     spawn-at-startup = [
-      {command = ["xwayland-satellite" ":1"];}
-      {command = ["hyprpaper"];}
-      {command = ["alacritty"];}
+      {command = ["xwayland-satellite" ":420"];}
+      # {command = ["hyprpaper"];}
+      {command = ["kitty"];}
     ];
 
     environment = {
-      DISPLAY = ":1";
+      DISPLAY = ":420";
       GDK_BACKEND = "wayland";
     };
 

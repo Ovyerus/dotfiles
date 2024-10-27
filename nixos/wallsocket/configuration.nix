@@ -6,6 +6,7 @@
   imports = [
     ./bluetooth.nix
     ./graphics.nix
+    # ./niri.nix
     ./hardware-configuration.nix
     ../../modules/nixpkgs.nix
   ];
@@ -40,7 +41,7 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  # services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.enable = true;
@@ -48,21 +49,6 @@
   services.displayManager.sddm.wayland.enable = true;
   services.displayManager.defaultSession = "plasma"; # Set to `plasma` for Wayland.
   services.desktopManager.plasma6.enable = true;
-
-  # programs.niri = {
-  #   enable = true;
-  #   package = pkgs.niri;
-  # };
-
-  # services.greetd = {
-  #   enable = true;
-  #   settings = {
-  #     default_session = {
-  #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri-session -r --window-padding 4";
-  #       user = "greeter";
-  #     };
-  #   };
-  # };
 
   # Configure keymap in X11
   services.xserver = {
@@ -107,6 +93,7 @@
 
   environment.sessionVariables."MOZ_ENABLE_WAYLAND" = 0;
   environment.systemPackages = with pkgs; [
+    amdgpu_top
     docker-compose
     ffmpeg_6-full
     git
@@ -171,10 +158,10 @@
 
   fonts = {
     packages = [
-    pkgs.ubuntu_font_family
-    pkgs.inter
-    inputs.iosevka-solai.packages.x86_64-linux.bin
-  ];
+      pkgs.ubuntu_font_family
+      pkgs.inter
+      inputs.iosevka-solai.packages.x86_64-linux.bin
+    ];
 
     fontDir.enable = true;
     enableDefaultPackages = true;

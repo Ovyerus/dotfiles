@@ -31,7 +31,7 @@
     alejandra
     audacity
     # betterbird
-    bitwarden-desktop
+    # bitwarden-desktop
     blender
     bottles
     bruno

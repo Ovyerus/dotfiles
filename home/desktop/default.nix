@@ -4,7 +4,15 @@
   inputs,
   ...
 }: {
-  imports = [./apps.nix ./xdg.nix ../common/cli.nix ../common/git.nix ../common/nixpkgs.nix ../common/shell];
+  imports = [
+    ./apps.nix
+    # ./niri.nix
+    ./xdg.nix
+    ../common/cli.nix
+    ../common/git.nix
+    ../common/nixpkgs.nix
+    ../common/shell
+  ];
 
   home.sessionVariables.DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
 
