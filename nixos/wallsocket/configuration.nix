@@ -106,6 +106,7 @@
     wcurl
     p7zip
     kdePackages.kcalc
+    kdePackages.partitionmanager
     # tailscale-systray
     # wl-clipboard
     # kitty

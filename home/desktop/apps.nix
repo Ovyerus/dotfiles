@@ -46,6 +46,7 @@
     klog-time-tracker
     libreoffice
     lunacy
+    mixxx
     mpv
     obs-studio
     obsidian
