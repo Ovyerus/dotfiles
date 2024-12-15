@@ -211,6 +211,11 @@
 
   services.flatpak.enable = true;
 
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
   services.tailscale = {
     enable = true;
     openFirewall = true;
