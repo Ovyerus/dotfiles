@@ -51,6 +51,12 @@
   services.displayManager.defaultSession = "plasma"; # Set to `plasma` for Wayland.
   services.desktopManager.plasma6.enable = true;
 
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    elisa
+    gwenview
+    konsole
+  ];
+
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us";
@@ -77,9 +83,11 @@
   users.users.ovy = {
     isNormalUser = true;
     description = "Ashlynne Mitchell";
-    extraGroups = ["networkmanager" "wheel" "libvirtd"];
+    extraGroups = ["networkmanager" "wheel" "libvirtd" "cdrom"];
     shell = pkgs.fish;
   };
+
+  system.tools.nixos-option.enable = false;
 
   nix.settings = {
     auto-optimise-store = true;
@@ -94,6 +102,7 @@
 
   environment.sessionVariables."MOZ_ENABLE_WAYLAND" = 0;
   environment.systemPackages = with pkgs; [
+    adwaita-icon-theme
     amdgpu_top
     docker-compose
     ffmpeg_6-full
@@ -103,6 +112,7 @@
     niri
     openssh
     solaar
+    unar
     wget
     wcurl
     p7zip
