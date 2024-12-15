@@ -24,6 +24,7 @@
       {id = "fkagelmloambgokoeokbpihmgpkbgbfm";} # Indie Wiki Buddy
       {id = "paponcgjfojgemddooebbgniglhkajkj";} # Ambient light for YouTube
       {id = "immpkjjlgappgfkkfieppnmlhakdmaab";} # Imagus (TODO: find alternative?)
+      {id = "nhdogjmejiglipccpnnnanhbledajbpd";} # Vue devtools
     ];
   };
 
