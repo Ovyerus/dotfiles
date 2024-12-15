@@ -36,7 +36,6 @@
     blender
     bottles
     bruno
-    celluloid
     davinci-resolve
     distrobox
     feishin
@@ -47,11 +46,11 @@
     klog-time-tracker
     libreoffice
     lunacy
-    mixxx
-    mpv
+    lutris
+    # mixxx
     obs-studio
     obsidian
-    orca-slicer
+    # orca-slicer
     p7zip
     picard
     pinta
@@ -59,9 +58,11 @@
     podman-tui
     # plasticity
     prismlauncher
+    qimgv
     slack
     syncthingtray
     vesktop
+    vlc
     vorta
     winetricks
     (wineWowPackages.full.overrideAttrs (finalAttrs: previousAttrs: {
@@ -73,6 +74,7 @@
         hash = "sha256-xa5xZQxlY5MH2jcdKIOs7zd3y/1UoxQhe/L4NoMyCqw=";
       };
     }))
+    wowup-cf
     yt-dlp
   ];
 
