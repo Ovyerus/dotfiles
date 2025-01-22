@@ -69,7 +69,7 @@
   services.usbmuxd.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -92,6 +92,7 @@
   nix.settings = {
     auto-optimise-store = true;
     experimental-features = ["nix-command" "flakes"];
+    trusted-users = ["root" "@wheel"];
   };
 
   nix.gc = {
@@ -246,6 +247,20 @@
     style = "kvantum";
     platformTheme = "kde";
   };
+
+  systemd.extraConfig = ''
+    DefaultTimeoutStopSec=30s
+  '';
+  systemd.user.extraConfig = ''
+    DefaultTimeoutStopSec=30s
+  '';
+
+  services.systembus-notify.enable = true;
+
+  services.earlyoom.enable = true;
+  services.earlyoom.enableNotifications = true;
+  zramSwap.enable = true;
+  zramSwap.algorithm = "zstd";
 
   system.stateVersion = "24.05"; # Did you read the comment?
 }
