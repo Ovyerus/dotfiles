@@ -25,20 +25,21 @@
       {id = "paponcgjfojgemddooebbgniglhkajkj";} # Ambient light for YouTube
       {id = "immpkjjlgappgfkkfieppnmlhakdmaab";} # Imagus (TODO: find alternative?)
       {id = "nhdogjmejiglipccpnnnanhbledajbpd";} # Vue devtools
+      {id = "nkgllhigpcljnhoakjkgaieabnkmgdkb";} # Don't Fuck With Paste
     ];
   };
 
   home.packages = with pkgs; [
     alejandra
     audacity
-    # betterbird
     # bitwarden-desktop
     blender
-    bottles
-    bruno
-    davinci-resolve
+    btop
+    # bottles
+    # bruno
+    # davinci-resolve
     distrobox
-    feishin
+    # feishin
     gajim
     glaxnimate
     godot_4
@@ -46,10 +47,11 @@
     klog-time-tracker
     libreoffice
     lunacy
-    lutris
+    (lutris.override {extraPkgs = pkgs: [pkgs.proton-ge-bin];})
     # mixxx
     obs-studio
     obsidian
+    oversteer
     # orca-slicer
     p7zip
     picard
@@ -65,18 +67,26 @@
     vlc
     vorta
     winetricks
-    (wineWowPackages.full.overrideAttrs (finalAttrs: previousAttrs: {
-      src = pkgs.fetchFromGitLab {
-        owner = "ElementalWarrior";
-        repo = "wine";
-        rev = "d0fe9b9ab64d7e310b2b7afd135369e49758b24b";
-        domain = "gitlab.winehq.org";
-        hash = "sha256-xa5xZQxlY5MH2jcdKIOs7zd3y/1UoxQhe/L4NoMyCqw=";
-      };
-    }))
+    # wineWowPackages.full
+    # (wineWowPackages.full.overrideAttrs (finalAttrs: previousAttrs: {
+    #   src = pkgs.fetchFromGitLab {
+    #     owner = "ElementalWarrior";
+    #     repo = "wine";
+    #     rev = "d0fe9b9ab64d7e310b2b7afd135369e49758b24b";
+    #     domain = "gitlab.winehq.org";
+    #     hash = "sha256-xa5xZQxlY5MH2jcdKIOs7zd3y/1UoxQhe/L4NoMyCqw=";
+    #   };
+    # }))
     wowup-cf
     yt-dlp
   ];
+
+  systemd.user.targets.tray = {
+    Unit = {
+      Description = "Home Manager System Tray";
+      Requires = ["graphical-session-pre.target"];
+    };
+  };
 
   services.owncloud-client.enable = true;
 
@@ -85,6 +95,9 @@
     tray.enable = true;
     tray.package = pkgs.syncthingtray;
   };
+
+  # Fix syncthingtray complaining about the tray not existing, because of the custom tray service above.
+  systemd.user.services.syncthingtray.Service.ExecStart = "${config.services.syncthing.tray.package}/bin/${config.service.syncthing.tray.command} --wait";
 
   programs.vscode = {
     enable = true;
