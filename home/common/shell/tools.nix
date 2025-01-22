@@ -19,7 +19,6 @@
 
   programs.bat = {
     enable = true;
-    extraPackages = [pkgs.bat-extras.batgrep];
     config = {
       theme = "DarkNeon";
       italic-text = "always";
@@ -38,8 +37,10 @@
     enable = true;
     nix-direnv.enable = true;
     config.whitelist.prefix = [
-      "${config.home.homeDirectory}/Projects/personal"
       "${config.home.homeDirectory}/Projects/bots-gg"
+      "${config.home.homeDirectory}/Projects/dijit"
+      "${config.home.homeDirectory}/Projects/personal"
+      "${config.home.homeDirectory}/Projects/work"
     ];
   };
 

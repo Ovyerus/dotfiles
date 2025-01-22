@@ -27,7 +27,7 @@
     font.name = "Iosevka Solai";
     font.size = 12;
     shellIntegration.enableFishIntegration = true;
-    theme = "Rosé Pine";
+    themeFile = "rose-pine";
     settings = {
       cursor_shape = "block";
       cursor_shape_unfocused = "hollow";
