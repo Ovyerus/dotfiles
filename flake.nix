@@ -59,7 +59,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users.ovy = import ./home/desktop; # TODO: module loading
+          home-manager.users.ovy = import ./home/wallsocket.nix;
           home-manager.extraSpecialArgs = {inherit inputs;};
         }
       ];
@@ -74,7 +74,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users.ovy = import ./home/darwin;
+          home-manager.users.ovy = import ./home/shimmer.nix;
           home-manager.extraSpecialArgs = {inherit inputs;};
         }
       ];

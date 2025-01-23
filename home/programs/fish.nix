@@ -1,10 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  imports = [./tools.nix];
-
+{pkgs, ...}: {
   # TODO: custom fifc rules (nix shell, nix run, ...)
   # TODO: how to customise fifc pane
   programs.fish = {
@@ -77,7 +71,7 @@
         src = pkgs.fetchFromGitHub {
           owner = "PatrickF1";
           repo = "fzf.fish";
-          rev = "46c7bc6354494be5d869d56a24a46823a9fdded0";
+          rev = "8920367cf85eee5218cc25a11e209d46e2591e7a";
           hash = "sha256-lxQZo6APemNjt2c21IL7+uY3YVs81nuaRUL7NDMcB6s=";
         };
       }
@@ -86,7 +80,7 @@
         src = pkgs.fetchFromGitHub {
           owner = "gazorby";
           repo = "fifc";
-          rev = "2ee5beec7dfd28101026357633616a211fe240ae";
+          rev = "a01650cd432becdc6e36feeff5e8d657bd7ee84a";
           hash = "sha256-Nrart7WAh2VQhsDDe0EFI59TqvBO56US2MraqencxgE";
         };
       }

@@ -6,6 +6,7 @@
 }: {
   # Core CLI tools
   home.packages = with pkgs; [
+    curlie
     du-dust
     duf
     fd

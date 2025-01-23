@@ -4,7 +4,6 @@
     age-plugin-yubikey
     alejandra
     cachix
-    curlie
     colmena
     hexyl
     lazydocker
@@ -15,17 +14,6 @@
     nix-output-monitor
     pgcli
     rage
-    xh
+    systemctl-tui
   ];
-
-  programs.ssh = {
-    enable = true;
-    matchBlocks."*" = {
-      identitiesOnly = true;
-      identityFile = "~/.ssh/id_ed25519_sk_rk";
-      user = "ovy";
-    };
-  };
-
-  home.sessionVariables.EDITOR = "code --wait";
 }
