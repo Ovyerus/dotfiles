@@ -56,11 +56,13 @@
         home-manager.nixosModules.home-manager
         {
           programs.command-not-found.enable = false;
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
-          home-manager.users.ovy = import ./home/wallsocket.nix;
-          home-manager.extraSpecialArgs = {inherit inputs;};
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "backup";
+            users.ovy = import ./home/wallsocket.nix;
+            extraSpecialArgs = {inherit inputs;};
+          };
         }
       ];
     };
@@ -71,20 +73,28 @@
         ./darwin/shimmer/configuration.nix
         home-manager.darwinModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
-          home-manager.users.ovy = import ./home/shimmer.nix;
-          home-manager.extraSpecialArgs = {inherit inputs;};
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "backup";
+            users.ovy = import ./home/shimmer.nix;
+            extraSpecialArgs = {inherit inputs;};
+          };
         }
       ];
     };
 
-    # packages.x86_64-linux = let
-    #   pkgs = import nixpkgs {system = "x86_64-linux";};
-    # in {
-    #   ts-systray = pkgs.callPackage ./packages/ts-systray.nix {};
-    # };
+    nixosModules.serverHomeManager = {...}: {
+      imports = [home-manager.nixosModules.home-manager];
+
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        backupFileExtension = "backup";
+        users.ovy = import ./home/server.nix;
+        extraSpecialArgs = {inherit inputs;};
+      };
+    };
 
     formatter = {
       aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.alejandra;
