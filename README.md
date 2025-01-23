@@ -1,26 +1,14 @@
 # Ovyerus' dotfiles
 
-Dotfiles and other home configuration for my Unix machines. As of writing I only
-apply this to my Darwin desktops, and as such this purely assumes such an
-environment. I may expand this to work on my Linux servers (and desktops
-eventually) in the future.
+[NixOS](https://nixos.org), [nix-darwin](https://github.com/LnL7/nix-darwin),
+and [home-manager](https://github.com/nix-community/home-manager) configurations
+for my various personal machines and servers.
 
-## Installing
+These configurations are not intended to be used verbatim for anyone else's
+usage, and instead are provided as real world examples of daily driver Nix
+configurations. But there's nothing stopping you if you really want to do that.
 
-Make sure you have [Nix](https://nixos.org/) installed on your machine -
-[nix-installer](https://github.com/DeterminateSystems/nix-installer) is the
-easiest method - or use NixOS.
-
-If you don't use nix-installer, you will need to enable the
-[`flakes`](https://nixos.org/manual/nix/stable/contributing/experimental-features#xp-feature-flakes)
-and
-[`nix-command`](https://nixos.org/manual/nix/stable/contributing/experimental-features#xp-feature-nix-command)
-experimental features.
-
-```
-git clone https://github.com/Ovyerus/dotfiles.git ~/.config/home-manager
-nix run home-manager/master -- init --switch
-```
+NixOS and nix-darwin entrypoints are in [./flake.nix](./flake.nix).
 
 ## License
 
