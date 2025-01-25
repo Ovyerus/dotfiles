@@ -19,8 +19,9 @@
     interval.Weekday = 6;
   };
 
+  nix.optimise.automatic = true;
+
   nix.settings = {
-    auto-optimise-store = true;
     builders-use-substitutes = true;
     experimental-features = "nix-command flakes";
     trusted-users = ["root" "ovy"];
