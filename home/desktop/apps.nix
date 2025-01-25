@@ -4,9 +4,9 @@
   ...
 }: {
   home.packages = with pkgs; [
+    _1password-gui
     alejandra
     audacity
-    # bitwarden-desktop
     blender
     btop
     # bottles
@@ -37,6 +37,7 @@
     qimgv
     slack
     syncthingtray
+    umu-launcher
     vesktop
     vlc
     vorta

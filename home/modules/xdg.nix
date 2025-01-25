@@ -21,4 +21,5 @@ in {
   };
 
   xdg.dataFile."vivalarc".source = vivalarc;
+  xdg.dataFile."lutris/runtime/umu/umu-run".source = "${pkgs.umu-launcher}/bin/umu-run";
 }
