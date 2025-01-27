@@ -4,7 +4,6 @@
   ...
 }: {
   home.packages = with pkgs; [
-    _1password-gui
     alejandra
     audacity
     blender
@@ -54,6 +53,7 @@
     # }))
     wowup-cf
     yt-dlp
+    yubioath-flutter
   ];
 
   services.owncloud-client.enable = true;

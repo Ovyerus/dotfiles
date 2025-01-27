@@ -256,6 +256,16 @@
   '';
 
   services.systembus-notify.enable = true;
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = ["ovy"];
+  };
+
+  environment.etc."1password/custom_allowed_browsers" = {
+    text = "vivaldi-bin";
+    mode = "0755";
+  };
 
   services.earlyoom.enable = true;
   services.earlyoom.enableNotifications = true;

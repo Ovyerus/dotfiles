@@ -13,7 +13,7 @@
     });
     commandLineArgs = ["--enable-blink-features=MiddleClickAutoscroll" "--enable-features=VaapiVideoDecoder"];
     extensions = [
-      {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
+      {id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa";} # 1Password
       {id = "hhinaapppaileiechjoiifaancjggfjm";} # Web Scrobbler
       {id = "jinjaccalgkegednnccohejagnlnfdag";} # Violentmonkey
       {id = "fkagelmloambgokoeokbpihmgpkbgbfm";} # Indie Wiki Buddy
