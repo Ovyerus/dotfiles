@@ -5,6 +5,7 @@
     alejandra
     cachix
     colmena
+    fastfetch
     hexyl
     lazydocker
     macchina

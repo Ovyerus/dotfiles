@@ -19,13 +19,13 @@
     handbrake
     klog-time-tracker
     libreoffice
+    losslesscut-bin
     lunacy
-    (lutris.override {extraPkgs = pkgs: [pkgs.proton-ge-bin];})
+    lutris
     # mixxx
     obs-studio
     obsidian
     oversteer
-    # orca-slicer
     p7zip
     picard
     pinta
@@ -36,7 +36,6 @@
     qimgv
     slack
     syncthingtray
-    umu-launcher
     vesktop
     vlc
     vorta
