@@ -21,6 +21,7 @@
     ];
 
     casks = [
+      "1password"
       "discord"
       "figma"
       "httpie"
@@ -37,7 +38,6 @@
     ];
 
     masApps = {
-      Bitwarden = 1352778147;
       Keka = 470158793;
       "Yubico Authenticator" = 1497506650;
       "System Color Picker" = 1545870783;
