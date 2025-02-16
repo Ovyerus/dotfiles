@@ -11,6 +11,12 @@
     userEmail = "ovy@ovyerus.com";
     delta.enable = true;
 
+    signing = {
+      signByDefault = true;
+      format = "ssh";
+      key = "~/.ssh/id_ed25519_sk_rk";
+    };
+
     extraConfig = {
       # TODO: custom pretty stuff?
       blame.showEmail = true;
@@ -47,11 +53,7 @@
         showStash = true;
       };
 
-      gpg.format = "ssh";
       gpg.ssh.allowedSignersFile = "~/.config/git/allowed_signers";
-      user.signingKey = "~/.ssh/id_ed25519_sk_rk";
-      commit.gpgsign = true;
-      tag.gpgsign = true;
       # "gpg.ssh.program = "gfh-keygen";
       # "gpg.ssh.defaultKeyCommand = "gfh";
     };
