@@ -83,9 +83,11 @@
   users.users.ovy = {
     isNormalUser = true;
     description = "Ashlynne Mitchell";
-    extraGroups = ["networkmanager" "wheel" "libvirtd" "cdrom"];
+    extraGroups = ["networkmanager" "wheel" "libvirtd" "cdrom" "adbusers"];
     shell = pkgs.fish;
   };
+
+  programs.adb.enable = true;
 
   system.tools.nixos-option.enable = false;
 
@@ -119,6 +121,8 @@
     p7zip
     kdePackages.kcalc
     kdePackages.partitionmanager
+    pciutils
+    opencomposite
     # tailscale-systray
     # wl-clipboard
     # kitty
@@ -265,6 +269,40 @@
   environment.etc."1password/custom_allowed_browsers" = {
     text = "vivaldi-bin";
     mode = "0755";
+  };
+
+  services.espanso.enable = true;
+  services.espanso.package = pkgs.espanso-wayland;
+
+  services.avahi.enable = true;
+  services.wivrn = {
+    enable = true;
+    defaultRuntime = true;
+    autoStart = true;
+    openFirewall = true;
+    config = {
+      enable = true;
+      json = {
+        scale = 1.0; # foveation
+        bitrate = 50000000; # 50 Mb/s
+        # application = [pkgs.wlx-overlay-s];
+        encoders = [
+          {
+            encoder = "vaapi";
+            codec = "av1";
+            width = 1;
+            height = 1;
+            offset_x = 0;
+            offset_y = 0;
+          }
+        ];
+      };
+    };
+  };
+  programs.corectrl = {
+    enable = true;
+    gpuOverclock.enable = true;
+    gpuOverclock.ppfeaturemask = "0xffffffff";
   };
 
   services.earlyoom.enable = true;
