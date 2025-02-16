@@ -10,7 +10,6 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   # Nix setup
-  services.nix-daemon.enable = true;
   nix.distributedBuilds = true;
 
   nix.gc = {
