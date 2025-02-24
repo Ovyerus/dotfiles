@@ -9,6 +9,7 @@
     hexyl
     lazydocker
     macchina
+    minio-client
     mix2nix
     minisign
     mtr
