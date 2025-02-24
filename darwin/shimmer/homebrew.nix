@@ -18,6 +18,8 @@
       "klog"
       "mas"
       "swiftformat"
+      "xcbeautify"
+      "xcodegen"
     ];
 
     casks = [
