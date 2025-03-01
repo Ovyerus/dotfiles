@@ -33,6 +33,7 @@
     podman-tui
     # plasticity
     prismlauncher
+    qbittorrent
     qimgv
     slack
     syncthingtray
