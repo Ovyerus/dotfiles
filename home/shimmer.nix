@@ -1,7 +1,6 @@
 {lib, ...}: {
   imports = [
     ./darwin/configs.nix
-    ./modules/nixpkgs.nix
     ./modules/ssh.nix
     ./programs/common-cli.nix
     ./programs/desktop-cli.nix

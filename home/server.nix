@@ -1,5 +1,5 @@
 {...}: {
-  imports = [./modules/nixpkgs.nix ./programs/common-cli.nix ./programs/fish.nix];
+  imports = [./programs/common-cli.nix ./programs/fish.nix];
   home.sessionVariables.EDITOR = "micro";
 
   news.display = "silent";
