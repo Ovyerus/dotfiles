@@ -44,7 +44,14 @@
     nix-index-database,
     nixpkgs,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    packages.${system} = {
+      iconifydl = pkgs.callPackage ./pkgs/iconifydl.nix {};
+    };
+
     nixosConfigurations.wallsocket = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
