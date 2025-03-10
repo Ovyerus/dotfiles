@@ -1,15 +1,26 @@
 {
-  pkgs,
+  lib,
   inputs,
+  pkgs,
   ...
 }: {
   imports = [
     ./bluetooth.nix
     ./graphics.nix
-    # ./niri.nix
     ./hardware-configuration.nix
     ../../modules/nixpkgs.nix
   ];
+
+  specialisation.niri.configuration = {
+    system.nixos.tags = ["niri"];
+    imports = [./niri.nix];
+
+    services.displayManager.enable = false;
+    services.displayManager.sddm.enable = false;
+    services.displayManager.sddm.wayland.enable = false;
+    # services.displayManager.defaultSession = lib.mkDefault "plasma";
+    services.desktopManager.plasma6.enable = false;
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -18,14 +29,10 @@
   boot.kernel.sysctl."fs.file-max" = 2147483642;
 
   networking.hostName = "wallsocket";
-
-  # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
+  # i18n & time
   time.timeZone = "Australia/Melbourne";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -41,11 +48,11 @@
   };
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.displayManager.defaultSession = "plasma"; # Set to `plasma` for Wayland.
-  services.desktopManager.plasma6.enable = true;
+  services.displayManager.enable = lib.mkDefault true;
+  services.displayManager.sddm.enable = lib.mkDefault true;
+  services.displayManager.sddm.wayland.enable = lib.mkDefault true;
+  services.displayManager.defaultSession = lib.mkDefault "plasma"; # Set to `plasma` for Wayland.
+  services.desktopManager.plasma6.enable = lib.mkDefault true;
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     elisa
@@ -93,6 +100,7 @@
     dates = "weekly";
   };
 
+  environment.sessionVariables."NIXOS_OZONE_WL" = 1;
   environment.sessionVariables."MOZ_ENABLE_WAYLAND" = 0;
   environment.systemPackages = with pkgs; [
     adwaita-icon-theme

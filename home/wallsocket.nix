@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./desktop/apps.nix
     ./modules/espanso.nix
@@ -23,7 +27,7 @@
   };
 
   # Temporary location for these
-  home.packages = with pkgs; [ags inotify-tools];
+  home.packages = [pkgs.inotify-tools inputs.ags.packages.${pkgs.system}.default];
 
   home.sessionVariables.DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
 

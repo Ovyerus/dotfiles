@@ -12,6 +12,8 @@
     #   variant = "colemak";
     # };
 
+    # TODO: maybe explicitly define outputs
+
     input.mouse = {
       natural-scroll = false;
       accel-profile = "flat";
@@ -40,8 +42,8 @@
 
     layout = {
       struts = let
-        x = 32;
-        y = 32;
+        x = 16;
+        y = 16;
       in {
         top = y;
         bottom = y;
@@ -59,6 +61,8 @@
           relative-to = "workspace-view";
         };
       };
+
+      shadow.enable = true;
     };
 
     window-rules = [
@@ -74,6 +78,10 @@
         clip-to-geometry = true;
         draw-border-with-background = false;
       }
+      {
+        matches = [{app-id = "^1Password$";}];
+        open-floating = true;
+      }
     ];
 
     # TODO: create custom keybinds on layer 1 so I don't need to use a fuckton of fingers
@@ -84,13 +92,13 @@
       "Mod+Q".action = close-window;
 
       # Quick access
-      "Mod+T".action = spawn "kitty"; # TODO: backtick instead?
+      "Mod+Grave".action = spawn "kitty";
       "Mod+B".action = spawn "vivaldi"; # TODO: spawn on startup instead
       "Mod+R".action = spawn "fuzzel";
 
-      # "Print".action = screenshot;
-      # "Ctrl+Print".action = screenshot-screen;
-      # "Alt+Print".action = screenshot-window;
+      "Print".action = screenshot;
+      "Ctrl+Print".action = screenshot-screen;
+      "Alt+Print".action = screenshot-window;
 
       # Resizing
       "Mod+F".action = maximize-column;
