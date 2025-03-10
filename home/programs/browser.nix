@@ -1,9 +1,4 @@
 {pkgs, ...}: {
-  programs.firefox = {
-    enable = true;
-    nativeMessagingHosts = [pkgs.kdePackages.plasma-browser-integration];
-  };
-
   programs.chromium = {
     enable = true;
     package = pkgs.vivaldi.overrideAttrs (finalAttrs: previousAttrs: {

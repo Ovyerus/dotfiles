@@ -40,10 +40,6 @@
     LC_TIME = "en_AU.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  # services.xserver.enable = true;
-
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.enable = true;
   services.displayManager.sddm.enable = true;
@@ -56,12 +52,6 @@
     gwenview
     konsole
   ];
-
-  # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "";
-  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -122,7 +112,6 @@
     kdePackages.kcalc
     kdePackages.partitionmanager
     pciutils
-    opencomposite
     # tailscale-systray
     # wl-clipboard
     # kitty
@@ -272,35 +261,6 @@
   };
 
   services.avahi.enable = true;
-  services.wivrn = {
-    enable = true;
-    defaultRuntime = true;
-    autoStart = true;
-    openFirewall = true;
-    config = {
-      enable = true;
-      json = {
-        scale = 1.0; # foveation
-        bitrate = 50000000; # 50 Mb/s
-        # application = [pkgs.wlx-overlay-s];
-        encoders = [
-          {
-            encoder = "vaapi";
-            codec = "av1";
-            width = 1;
-            height = 1;
-            offset_x = 0;
-            offset_y = 0;
-          }
-        ];
-      };
-    };
-  };
-  programs.corectrl = {
-    enable = true;
-    gpuOverclock.enable = true;
-    gpuOverclock.ppfeaturemask = "0xffffffff";
-  };
 
   services.earlyoom.enable = true;
   services.earlyoom.enableNotifications = true;
