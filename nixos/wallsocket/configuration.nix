@@ -271,9 +271,6 @@
     mode = "0755";
   };
 
-  services.espanso.enable = true;
-  services.espanso.package = pkgs.espanso-wayland;
-
   services.avahi.enable = true;
   services.wivrn = {
     enable = true;

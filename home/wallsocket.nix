@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./desktop/apps.nix
+    ./modules/espanso.nix
     ./modules/niri.nix
     ./modules/ssh.nix
     ./modules/xdg.nix
