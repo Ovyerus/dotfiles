@@ -1,4 +1,11 @@
-{lib, ...}: {
+{lib, ...}: let
+  _1passwordAgent = options:
+    lib.hm.dag.entryBefore ["*"] ({
+        extraOptions.IdentityAgent = "~/.1password/agent.sock";
+        extraOptions.IdentitiesOnly = "no";
+      }
+      // options);
+in {
   programs.ssh = {
     enable = true;
     matchBlocks = {
@@ -8,11 +15,8 @@
         user = "ovy";
       };
       # OpenWrt
-      "192.168.1.1" = lib.hm.dag.entryBefore ["*"] {
-        user = "root";
-        extraOptions.IdentityAgent = "~/.1password/agent.sock";
-        extraOptions.IdentitiesOnly = "no";
-      };
+      "192.168.1.1" = _1passwordAgent {user = "root";};
+      "*.repo.borgbase.com" = _1passwordAgent {};
     };
   };
 }
