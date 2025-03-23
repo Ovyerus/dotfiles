@@ -24,7 +24,7 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 20;
+  boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernel.sysctl."vm.max_map_count" = 2147483642;
   boot.kernel.sysctl."fs.file-max" = 2147483642;
@@ -52,6 +52,10 @@
   services.displayManager.enable = lib.mkDefault true;
   services.displayManager.sddm.enable = lib.mkDefault true;
   services.displayManager.sddm.wayland.enable = lib.mkDefault true;
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "ovy";
+  };
   services.displayManager.defaultSession = lib.mkDefault "plasma"; # Set to `plasma` for Wayland.
   services.desktopManager.plasma6.enable = lib.mkDefault true;
 
@@ -60,6 +64,11 @@
     gwenview
     konsole
   ];
+
+  security.pam.services.ovy.kwallet = {
+    enable = true;
+    package = pkgs.kdePackages.kwallet-pam;
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -101,7 +110,7 @@
     dates = "weekly";
   };
 
-  environment.sessionVariables."NIXOS_OZONE_WL" = 1;
+  # environment.sessionVariables."NIXOS_OZONE_WL" = 1;
   environment.sessionVariables."MOZ_ENABLE_WAYLAND" = 0;
   environment.systemPackages = with pkgs; [
     adwaita-icon-theme
@@ -117,6 +126,7 @@
     unar
     wget
     wcurl
+    sysstat
     p7zip
     kdePackages.kcalc
     kdePackages.partitionmanager
@@ -131,7 +141,13 @@
 
   # Allow `keymapp` to control my ZSA Moonlander
   # https://github.com/zsa/wally/wiki/Linux-install#2-create-a-udev-rule-file
-  services.udev.extraRules = ''
+  services.udev.extraRules = let
+    # nubia 5g
+    nubia = {
+      vendor = "1782";
+      product = "4021";
+    };
+  in ''
     # Rules for Oryx web flashing and live training
     KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
     KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
@@ -156,6 +172,11 @@
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE:="0666", SYMLINK+="stm32_dfu"
     # Keymapp Flashing rules for the Voyager
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
+
+    # ADB support for Nubia 5G
+    SUBSYSTEM=="usb", ATTR{idVendor}=="${nubia.vendor}", MODE="[]", GROUP="adbusers", TAG+="uaccess"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="${nubia.vendor}", ATTR{idProduct}=="${nubia.product}", SYMLINK+="android_adb"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="${nubia.vendor}", ATTR{idProduct}=="${nubia.product}", SYMLINK+="android_fastboot"
   '';
 
   programs.fish.enable = true;
