@@ -28,6 +28,7 @@
     '';
 
     shellAbbrs = {
+      code = "codium";
       ga = "git add";
       gaa = "git add -A";
       gc = {

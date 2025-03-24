@@ -1,11 +1,89 @@
 {
-  home.sessionVariables.EDITOR = "code --wait";
+  inputs,
+  pkgs,
+  ...
+}: {
+  home.sessionVariables.EDITOR = "codium --wait";
 
   programs.vscode = {
     enable = true;
+    mutableExtensionsDir = false;
+    package = pkgs.vscodium;
+
     profiles.default = {
       enableUpdateCheck = false;
-      # TODO: move formatter to a central place
+      enableExtensionUpdateCheck = false;
+
+      extensions = let
+        vscode-extensions = inputs.nix-vscode-extensions.extensions.${pkgs.system};
+        inherit (vscode-extensions) open-vsx vscode-marketplace;
+      in
+        with open-vsx; [
+          kamadorueda.alejandra
+          astro-build.astro-vscode
+          matthewpi.caddyfile-support
+          raidou.calc
+          artlaman.chalice-icon-theme # TODO: i should fork this to add support for some newer files (tbd)
+          adpyke.codesnap
+          clinyong.vscode-css-modules
+          mkhl.direnv
+          leonardssh.vscord
+          ms-azuretools.vscode-docker
+          editorconfig.editorconfig
+          irongeek.vscode-env
+          pgourlain.erlang
+          usernamehw.errorlens
+          dbaeumer.vscode-eslint
+          tamasfe.even-better-toml
+          sleistner.vscode-fileutils
+          bmalehorn.vscode-fish
+          github.vscode-github-actions
+          eamodio.gitlens
+          # TODO: terraform (use opentofu instead)
+          ms-vscode.hexeditor
+          lokalise.i18n-ally
+          kisstkondoros.vscode-gutter-preview
+          ms-python.isort
+          bierner.markdown-preview-github-styles
+          unifiedjs.vscode-mdx
+          jnoortheen.nix-ide
+          nuxtr.nuxtr-vscode
+          vunguyentuan.vscode-postcss
+          esbenp.prettier-vscode
+          prisma.prisma
+          # TODO: use jedi instead of pylance
+          ms-python.python
+          ms-python.debugpy
+          mechatroner.rainbow-csv
+          medo64.render-crlf
+          stkb.rewrap
+          rust-lang.rust-analyzer
+          mrmlnc.vscode-scss
+          svelte.svelte-vscode
+          jock.svg
+          coolbear.systemd-unit-file
+          bradlc.vscode-tailwindcss
+          myriad-dreamin.tinymist
+          gruntfuggly.todo-tree
+          tomoki1207.pdf
+          zxh404.vscode-proto3
+          styled-components.vscode-styled-components # TODO: don't really need this
+          vue.volar
+          wakatime.vscode-wakatime
+          redhat.vscode-yaml
+          arcanis.vscode-zipfs
+          vscode-marketplace.wraith13.background-phi-colors
+          vscode-marketplace.be5invis.theme-dolch
+          vscode-marketplace.fabiospampinato.vscode-diff
+          vscode-marketplace.jakebecker.elixir-ls
+          vscode-marketplace.zh9528.file-size
+          vscode-marketplace.vladdesv.vscode-klog
+          vscode-marketplace.dt.ghlink
+          vscode-marketplace.tyriar.lorem-ipsum
+          vscode-marketplace.phoenixframework.phoenix
+          vscode-marketplace.frigus02.vscode-sql-tagged-template-literals-syntax-only # TODO: alternative?
+        ];
+
       userSettings = {
         # Formatters
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
@@ -145,6 +223,8 @@
         "window.titleBarStyle" = "custom";
         "files.simpleDialog.enable" = true;
         "window.dialogStyle" = "custom";
+
+        # Fuck off
       };
     };
   };

@@ -16,6 +16,7 @@
       {id = "immpkjjlgappgfkkfieppnmlhakdmaab";} # Imagus (TODO: find alternative?)
       {id = "nhdogjmejiglipccpnnnanhbledajbpd";} # Vue devtools
       {id = "nkgllhigpcljnhoakjkgaieabnkmgdkb";} # Don't Fuck With Paste
+      {id = "kgcjekpmcjjogibpjebkhaanilehneje";} # hoarder.app
     ];
   };
 }
