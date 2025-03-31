@@ -51,7 +51,6 @@
     #     hash = "sha256-xa5xZQxlY5MH2jcdKIOs7zd3y/1UoxQhe/L4NoMyCqw=";
     #   };
     # }))
-    wowup-cf
     yt-dlp
     yubioath-flutter
   ];

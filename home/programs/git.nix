@@ -7,7 +7,7 @@
 
   programs.git = {
     enable = true;
-    userName = "Ovyerus";
+    userName = "Ashlynne Mitchell";
     userEmail = "ovy@ovyerus.com";
     delta.enable = true;
 
@@ -20,7 +20,6 @@
     extraConfig = {
       # TODO: custom pretty stuff?
       blame.showEmail = true;
-      # core.editor = "code --wait";
       init.defaultBranch = "main";
       pull.rebase = true;
 
