@@ -131,6 +131,8 @@
     kdePackages.kcalc
     kdePackages.partitionmanager
     pciutils
+    nvtopPackages.full
+    wineWowPackages.full
     # tailscale-systray
     # wl-clipboard
     # kitty
