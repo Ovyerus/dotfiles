@@ -290,7 +290,17 @@
     mode = "0755";
   };
 
-  services.avahi.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+    rocmOverrideGfx = "11.0.0";
+  };
 
   services.earlyoom.enable = true;
   services.earlyoom.enableNotifications = true;
