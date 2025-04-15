@@ -204,6 +204,9 @@
         # JS
         "debug.javascript.autoAttachFilter" = "onlyWithFlag";
 
+        # CSS
+        "files.associations"."*.css" = "tailwindcss";
+
         # Misc
         "yaml.format.proseWrap" = "always";
         "workbench.startupEditor" = "none";
