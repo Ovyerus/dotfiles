@@ -34,14 +34,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ags = {
-      url = "github:Aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # ags = {
+    #   url = "github:Aylur/ags";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = {
-    ags,
+    # ags,
     home-manager,
     lix-module,
     niri-flake,
@@ -53,22 +53,22 @@
   } @ inputs: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    agsPkgs = ags.packages.${system};
+    # agsPkgs = ags.packages.${system};
   in {
     packages.${system} = {
       iconifydl = pkgs.callPackage ./pkgs/iconifydl.nix {};
 
-      default = ags.lib.bundle {
-        inherit pkgs;
-        src = ./files/astal;
-        name = "ovy-shell";
-        entry = "app.ts";
-      };
+      # default = ags.lib.bundle {
+      #   inherit pkgs;
+      #   src = ./files/astal;
+      #   name = "ovy-shell";
+      #   entry = "app.ts";
+      # };
     };
 
-    devShells.x86_64-linux.default = pkgs.mkShell {
-      buildInputs = [agsPkgs.agsFull agsPkgs.io agsPkgs.apps agsPkgs.tray self.packages.${system}.iconifydl];
-    };
+    # devShells.x86_64-linux.default = pkgs.mkShell {
+    #   buildInputs = [agsPkgs.agsFull agsPkgs.io agsPkgs.apps agsPkgs.tray self.packages.${system}.iconifydl];
+    # };
 
     nixosConfigurations.wallsocket = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";

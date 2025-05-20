@@ -27,7 +27,7 @@
   };
 
   # Temporary location for these
-  home.packages = [pkgs.inotify-tools inputs.ags.packages.${pkgs.system}.default];
+  # home.packages = [pkgs.inotify-tools inputs.ags.packages.${pkgs.system}.default];
 
   home.sessionVariables.DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
 
