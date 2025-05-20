@@ -20,9 +20,18 @@
     };
 
     input.touchpad = {
+      enable = true;
       tap = true;
-      natural-scroll = false;
+      natural-scroll = true;
+      scroll-factor = 0.3;
       accel-profile = "adaptive";
+      tap-button-map = "left-right-middle";
+      scroll-method = "two-finger";
+    };
+
+    input.focus-follows-mouse = {
+      enable = true;
+      max-scroll-amount = "0%";
     };
 
     cursor.size = 32;
@@ -30,13 +39,13 @@
     prefer-no-csd = true;
 
     spawn-at-startup = [
-      {command = ["xwayland-satellite" ":420"];}
+      {command = ["xwayland-satellite"];}
       # {command = ["hyprpaper"];}
       {command = ["kitty"];}
     ];
 
     environment = {
-      DISPLAY = ":420";
+      DISPLAY = ":0";
       GDK_BACKEND = "wayland";
     };
 
@@ -97,7 +106,7 @@
       "Mod+R".action = spawn "fuzzel";
 
       "Print".action = screenshot;
-      "Ctrl+Print".action = screenshot-screen;
+      # "Ctrl+Print".action = screenshot-screen;
       "Alt+Print".action = screenshot-window;
 
       # Resizing
