@@ -27,7 +27,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    ffmpeg_6-full
+    ffmpeg-full
     git
     imagemagick
     nil

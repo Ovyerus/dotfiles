@@ -1,3 +1,4 @@
 age/
 result
-files/ags
+.direnv
+.envrc

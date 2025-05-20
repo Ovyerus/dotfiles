@@ -116,7 +116,7 @@
     adwaita-icon-theme
     amdgpu_top
     docker-compose
-    ffmpeg_6-full
+    ffmpeg-full
     git
     keymapp
     nil
@@ -130,9 +130,12 @@
     p7zip
     kdePackages.kcalc
     kdePackages.partitionmanager
+    kdePackages.kcolorchooser
     pciutils
     nvtopPackages.full
     wineWowPackages.full
+
+    fuzzel
     # tailscale-systray
     # wl-clipboard
     # kitty

@@ -20,7 +20,6 @@
     wofi
     swaylock
     # swaynotificationcenter
-    fuzzel
     xwayland-satellite
     kdePackages.kwallet
     kdePackages.kwalletmanager
