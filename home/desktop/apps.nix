@@ -9,14 +9,15 @@
     blender
     btop
     # bottles
-    # bruno
+    bruno
     # davinci-resolve
     distrobox
     # feishin
     gajim
     glaxnimate
-    godot_4
+    # godot_4
     handbrake
+    heynote
     klog-time-tracker
     libreoffice
     losslesscut-bin
