@@ -34,6 +34,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    denix = {
+      url = "github:yunfachi/denix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     # ags = {
     #   url = "github:Aylur/ags";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +48,7 @@
 
   outputs = {
     # ags,
+    denix,
     home-manager,
     lix-module,
     niri-flake,
@@ -54,6 +61,15 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     # agsPkgs = ags.packages.${system};
+    mkConfigurations = moduleSystem:
+      denix.lib.configurations (let
+        homeManagerUser = "ovy";
+      in {
+        inherit moduleSystem homeManagerUser;
+
+        paths = [./denix/hosts ./denix/modules]; #./denix/rices];
+        specialArgs = {inherit inputs moduleSystem homeManagerUser;};
+      });
   in {
     packages.${system} = {
       iconifydl = pkgs.callPackage ./pkgs/iconifydl.nix {};
@@ -70,56 +86,19 @@
     #   buildInputs = [agsPkgs.agsFull agsPkgs.io agsPkgs.apps agsPkgs.tray self.packages.${system}.iconifydl];
     # };
 
-    nixosConfigurations.wallsocket = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./nixos/wallsocket/configuration.nix
-        niri-flake.nixosModules.niri
-        nix-index-database.nixosModules.nix-index
-        lix-module.nixosModules.default
-        home-manager.nixosModules.home-manager
-        {
-          programs.command-not-found.enable = false;
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            backupFileExtension = "backup";
-            users.ovy = import ./home/wallsocket.nix;
-            extraSpecialArgs = {inherit inputs;};
-          };
-        }
-      ];
-    };
+    nixosConfigurations = mkConfigurations "nixos";
 
-    darwinConfigurations.shimmer = nix-darwin.lib.darwinSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./darwin/shimmer/configuration.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            backupFileExtension = "backup";
-            users.ovy = import ./home/shimmer.nix;
-            extraSpecialArgs = {inherit inputs;};
-          };
-        }
-      ];
-    };
+    # nixosModules.serverHomeManager = {...}: {
+    #   imports = [home-manager.nixosModules.home-manager];
 
-    nixosModules.serverHomeManager = {...}: {
-      imports = [home-manager.nixosModules.home-manager];
-
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        backupFileExtension = "backup";
-        users.ovy = import ./home/server.nix;
-        extraSpecialArgs = {inherit inputs;};
-      };
-    };
+    #   home-manager = {
+    #     useGlobalPkgs = true;
+    #     useUserPackages = true;
+    #     backupFileExtension = "backup";
+    #     users.ovy = import ./home/server.nix;
+    #     extraSpecialArgs = {inherit inputs;};
+    #   };
+    # };
 
     formatter = {
       aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.alejandra;
