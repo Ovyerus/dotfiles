@@ -6,7 +6,9 @@
 delib.module {
   name = "programs.desktop-cli";
 
-  home.always.home.packages = with pkgs; [
+  options = delib.singleEnableOption true;
+
+  home.ifEnabled.home.packages = with pkgs; [
     age-plugin-yubikey
     alejandra
     cachix

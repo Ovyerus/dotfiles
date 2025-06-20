@@ -35,7 +35,7 @@ delib.module {
     '';
 
     shellAbbrs = {
-      code = "codium";
+      # code = "codium";
       ga = "git add";
       gaa = "git add -A";
       gc = {

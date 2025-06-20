@@ -2,7 +2,9 @@
 delib.module {
   name = "programs.bat";
 
-  home.always.programs.bat = {
+  options = delib.singleEnableOption true;
+
+  home.ifEnabled.programs.bat = {
     enable = true;
     config = {
       theme = "DarkNeon";

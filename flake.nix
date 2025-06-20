@@ -67,7 +67,7 @@
       in {
         inherit moduleSystem homeManagerUser;
 
-        paths = [./denix/hosts ./denix/modules]; #./denix/rices];
+        paths = [./hosts ./modules]; #./rices];
         specialArgs = {inherit inputs moduleSystem homeManagerUser;};
       });
   in {
@@ -87,6 +87,7 @@
     # };
 
     nixosConfigurations = mkConfigurations "nixos";
+    darwinConfigurations = mkConfigurations "darwin";
 
     # nixosModules.serverHomeManager = {...}: {
     #   imports = [home-manager.nixosModules.home-manager];

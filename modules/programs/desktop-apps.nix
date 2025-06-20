@@ -6,7 +6,9 @@
 delib.module {
   name = "programs.desktop-apps";
 
-  home.always = {
+  options = delib.singleEnableOption true;
+
+  home.ifEnabled = {
     home.packages = with pkgs; [
       alejandra
       audacity

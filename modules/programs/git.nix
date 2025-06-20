@@ -5,7 +5,7 @@ delib.module {
   home.always = {myconfig, ...}: let
     inherit (myconfig.constants) userfullname useremail;
   in {
-    xdg.configFile."git/allowed_signers".source = ../../../files/git/allowed_signers;
+    xdg.configFile."git/allowed_signers".source = ../../files/git/allowed_signers;
 
     programs.git = {
       enable = true;

@@ -18,7 +18,10 @@ delib.module {
   in {
     home = {
       inherit username;
-      homeDirectory = "/home/${username}";
+      homeDirectory =
+        if moduleSystem == "darwin"
+        then "/Users/${username}"
+        else "/home/${username}";
     };
     news.display = "silent";
     programs.home-manager.enable = false;

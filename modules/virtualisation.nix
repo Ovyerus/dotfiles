@@ -6,7 +6,9 @@
 delib.module {
   name = "virtualisation";
 
-  nixos.always = {myconfig, ...}: let
+  options = delib.singleEnableOption true;
+
+  nixos.ifEnabled = {myconfig, ...}: let
     inherit (myconfig.constants) username;
   in {
     environment.systemPackages = [pkgs.docker-compose];
@@ -22,5 +24,5 @@ delib.module {
     users.users.${username}.extraGroups = ["libvirtd"];
   };
 
-  home.always.home.sessionVariables.DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
+  home.ifEnabled.home.sessionVariables.DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
 }

@@ -1,5 +1,10 @@
-{...}: {
-  homebrew = {
+{delib, ...}:
+delib.module {
+  name = "darwin.homebrew";
+
+  options = delib.singleEnableOption true;
+
+  darwin.ifEnabled.homebrew = {
     enable = true;
     # Update and cleanup homebrew packages when rebuilding.
     global.autoUpdate = false;
@@ -14,7 +19,6 @@
     ];
 
     brews = [
-      "bitwarden-cli"
       "klog"
       "mas"
       "swiftformat"
@@ -35,7 +39,7 @@
       # Actually searches symlinks for apps, compared to Alfred.
       "raycast"
       "swiftformat-for-xcode"
-      "visual-studio-code"
+      # "visual-studio-code"
       # "vorta"
     ];
 
@@ -43,7 +47,7 @@
       Keka = 470158793;
       "Yubico Authenticator" = 1497506650;
       "System Color Picker" = 1545870783;
-      Tailsacle = 1475387142;
+      Tailscale = 1475387142;
     };
   };
 }

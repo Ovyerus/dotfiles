@@ -7,7 +7,9 @@
 delib.module {
   name = "gaming";
 
-  nixos.always = {
+  options = delib.singleEnableOption true;
+
+  nixos.ifEnabled = {
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;
@@ -19,7 +21,7 @@ delib.module {
     programs.gamemode.enable = true;
   };
 
-  home.always = {
+  home.ifEnabled = {
     programs.mangohud = {
       enable = true;
       settings = {

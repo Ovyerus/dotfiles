@@ -4,7 +4,7 @@
   ...
 }:
 delib.module {
-  name = "programs.bat";
+  name = "programs.direnv";
 
   home.always.programs.direnv = {
     enable = true;

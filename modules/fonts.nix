@@ -47,4 +47,11 @@ delib.module {
     #   ];
     # };
   };
+
+  darwin.always = {
+    fonts.packages = with pkgs; [
+      inter
+      inputs.iosevka-solai.packages.aarch64-darwin.bin
+    ];
+  };
 }

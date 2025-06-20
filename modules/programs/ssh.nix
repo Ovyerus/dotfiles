@@ -13,6 +13,6 @@ delib.module {
     };
 
     # TODO: if darwin
-    # programs.ssh.includes = ["~/.orbstack/ssh/config"];
+    includes = ["~/.orbstack/ssh/config"];
   };
 }
