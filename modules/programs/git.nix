@@ -69,5 +69,15 @@ delib.module {
         };
       };
     };
+
+    programs.jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          name = userfullname;
+          email = useremail;
+        };
+      };
+    };
   };
 }

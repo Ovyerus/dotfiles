@@ -12,7 +12,6 @@ delib.module {
     age-plugin-yubikey
     alejandra
     cachix
-    colmena
     fastfetch
     hexyl
     lazydocker
