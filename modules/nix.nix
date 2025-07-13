@@ -3,17 +3,25 @@
   inputs,
   ...
 }: let
-  shared.nix.settings = {
-    auto-optimise-store = true;
-    experimental-features = ["nix-command" "flakes"];
-    trusted-users = ["root" "@wheel"];
+  shared = {
+    nixpkgs.config = import ../files/nixpkgs-config.nix;
+
+    nix.settings = {
+      auto-optimise-store = true;
+      experimental-features = ["nix-command" "flakes"];
+      trusted-users = ["root" "@wheel" "ovy"];
+    };
   };
 in
   delib.module {
     name = "nix";
 
     # TODO: double check home-manager options
-    home.always = shared;
+    home.always =
+      shared
+      // {
+        xdg.configFile."nixpkgs/config.nix".source = ../files/nixpkgs-config.nix;
+      };
     nixos.always =
       shared
       // {
@@ -33,13 +41,10 @@ in
           };
         };
 
-        nixpkgs.config.allowUnfree = true;
         system.tools.nixos-option.enable = false;
       };
 
     darwin.always = {
-      nixpkgs.config.allowUnfree = true;
-
       nix = {
         buildMachines = [
           {
