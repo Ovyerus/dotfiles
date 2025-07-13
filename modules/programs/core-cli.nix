@@ -21,7 +21,6 @@ delib.module {
       solaar
       sysstat
       unar
-      wcurl
       wget
       wineWowPackages.full
     ];
