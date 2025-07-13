@@ -16,10 +16,10 @@ delib.module {
       sddm.enable = true;
       sddm.wayland.enable = true;
 
-      autoLogin = {
-        enable = true;
-        user = "ovy";
-      };
+      # autoLogin = {
+      #   enable = true;
+      #   user = "ovy";
+      # };
     };
 
     services.desktopManager.plasma6.enable = true;
