@@ -38,6 +38,7 @@ delib.module {
             ms-azuretools.vscode-docker
             editorconfig.editorconfig
             irongeek.vscode-env
+            jjk.jjk
             pgourlain.erlang
             usernamehw.errorlens
             dbaeumer.vscode-eslint

@@ -1,4 +1,8 @@
-{delib, ...}:
+{
+  delib,
+  pkgs,
+  ...
+}:
 delib.module {
   name = "programs.git";
 
@@ -6,6 +10,8 @@ delib.module {
     inherit (myconfig.constants) userfullname useremail;
   in {
     xdg.configFile."git/allowed_signers".source = ../../files/git/allowed_signers;
+
+    home.packages = [pkgs.jjui];
 
     programs.git = {
       enable = true;
@@ -76,6 +82,32 @@ delib.module {
         user = {
           name = userfullname;
           email = useremail;
+        };
+
+        ui = {
+          default-command = "log";
+          show-cryptographic-signatures = true;
+        };
+
+        revset-aliases = {
+          "closest_bookmark(to)" = "heads(::to & bookmarks())";
+        };
+
+        aliases = {
+          tug = ["bookmark" "move" "--from" "closest_bookmark(@-)" "--to" "@-"];
+          e = ["edit"];
+        };
+
+        git = {
+          sign-on-push = true;
+          push-new-bookmarks = true;
+        };
+
+        signing = {
+          behavior = "drop";
+          backend = "ssh";
+          key = "~/.ssh/id_ed25519_sk_rk.pub";
+          backends.ssh.allowed-signers = "~/.config/git/allowed_signers";
         };
       };
     };
