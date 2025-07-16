@@ -44,6 +44,7 @@ delib.module {
           ff = "only";
           # Really only useful on a well-managed team. Maybe eventually.
           # verifySignatures = true;
+          conflictStyle = "diff3";
         };
 
         push = {
@@ -87,15 +88,25 @@ delib.module {
         ui = {
           default-command = "log";
           show-cryptographic-signatures = true;
+          conflict-marker-style = "git";
+          diff-formatter = "delta";
         };
 
         revset-aliases = {
           "closest_bookmark(to)" = "heads(::to & bookmarks())";
+          "p(n)" = "p(@, n)";
+          "p(r, n)" = "roots(r | ancestors(r-, n))";
         };
 
         aliases = {
           tug = ["bookmark" "move" "--from" "closest_bookmark(@-)" "--to" "@-"];
           e = ["edit"];
+          n = ["new"];
+        };
+
+        merge-tools.mergiraf = {
+          program = "mergiraf";
+          merge-args = ["merge" "$base" "$left" "$right" "-o" "$output"];
         };
 
         git = {
@@ -111,5 +122,7 @@ delib.module {
         };
       };
     };
+
+    programs.mergiraf.enable = true;
   };
 }
