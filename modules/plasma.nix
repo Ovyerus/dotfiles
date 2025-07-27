@@ -16,10 +16,10 @@ delib.module {
       sddm.enable = true;
       sddm.wayland.enable = true;
 
-      # autoLogin = {
-      #   enable = true;
-      #   user = "ovy";
-      # };
+      autoLogin = {
+        enable = true;
+        user = "ovy";
+      };
     };
 
     services.desktopManager.plasma6.enable = true;
@@ -39,5 +39,11 @@ delib.module {
     # environment.sessionVariables."NIXOS_OZONE_WL" = 1;
     environment.sessionVariables."MOZ_ENABLE_WAYLAND" = 0;
     environment.systemPackages = with pkgs; [adwaita-icon-theme kdePackages.kcalc kdePackages.partitionmanager kdePackages.kcolorchooser];
+
+    # TODO: move
+    boot.plymouth = {
+      enable = true;
+      theme = "breeze";
+    };
   };
 }
