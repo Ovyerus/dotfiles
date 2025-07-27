@@ -16,6 +16,10 @@ delib.module {
         trigger = ":degrees";
         replace = "°";
       }
+      {
+        trigger = ":--";
+        replace = "—";
+      }
     ];
   };
 }
