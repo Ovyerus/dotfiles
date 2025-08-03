@@ -13,7 +13,6 @@ delib.module {
     onActivation.cleanup = "zap";
 
     taps = [
-      "homebrew/cask-versions"
       "ovyerus/klog"
       "ovyerus/tap"
     ];
@@ -39,8 +38,8 @@ delib.module {
       # Actually searches symlinks for apps, compared to Alfred.
       "raycast"
       "swiftformat-for-xcode"
-      # "visual-studio-code"
       # "vorta"
+      "zen"
     ];
 
     masApps = {

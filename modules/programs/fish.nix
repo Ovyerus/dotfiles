@@ -26,6 +26,10 @@ delib.module {
 
       nix-your-shell fish | source
 
+      if test -d /opt/homebrew/bin;
+        fish_add_path /opt/homebrew/bin
+      end;
+
       # Docker compose alias that switches to if the standalone binary is present.
       if which docker-compose &> /dev/null;
         alias dc docker-compose;
