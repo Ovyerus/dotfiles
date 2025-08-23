@@ -29,7 +29,7 @@ delib.module {
   nixos.ifEnabled = {myconfig, ...}: {
     programs.nh = {
       enable = true;
-      flake = "/home/${myconfig.constants.username}/.config/nixos";
+      flake = "/etc/nixos";
     };
   };
 

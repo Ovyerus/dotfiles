@@ -99,9 +99,10 @@ delib.module {
         };
 
         aliases = {
-          tug = ["bookmark" "move" "--from" "closest_bookmark(@-)" "--to" "@-"];
           e = ["edit"];
           n = ["new"];
+          tug = ["bookmark" "move" "--from" "closest_bookmark(@-)" "--to" "@-"];
+          tug-here = ["bookmark" "move" "--from" "closest_bookmark(@)" "--to" "@"];
         };
 
         merge-tools.mergiraf = {
@@ -112,6 +113,7 @@ delib.module {
         git = {
           sign-on-push = true;
           push-new-bookmarks = true;
+          write-change-id-header = true;
         };
 
         signing = {
