@@ -18,7 +18,6 @@ delib.module {
       openssh
       p7zip
       pciutils
-      solaar
       sysstat
       unar
       wget
