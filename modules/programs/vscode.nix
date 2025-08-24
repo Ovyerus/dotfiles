@@ -47,7 +47,6 @@ delib.module {
             bmalehorn.vscode-fish
             github.vscode-github-actions
             eamodio.gitlens
-            # TODO: terraform (use opentofu instead)
             ms-vscode.hexeditor
             lokalise.i18n-ally
             kisstkondoros.vscode-gutter-preview
@@ -59,6 +58,7 @@ delib.module {
             vunguyentuan.vscode-postcss
             esbenp.prettier-vscode
             prisma.prisma
+            gleam.gleam
             # TODO: use jedi instead of pylance
             ms-python.python
             ms-python.debugpy
