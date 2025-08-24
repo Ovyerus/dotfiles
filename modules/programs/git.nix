@@ -90,6 +90,8 @@ delib.module {
           show-cryptographic-signatures = true;
           conflict-marker-style = "git";
           diff-formatter = "delta";
+          editor = "codium -w";
+          merge-editor = "vscodium";
         };
 
         revset-aliases = {
@@ -108,6 +110,8 @@ delib.module {
         merge-tools.mergiraf = {
           program = "mergiraf";
           merge-args = ["merge" "$base" "$left" "$right" "-o" "$output"];
+          merge-conflict-exit-codes = [1];
+          conflict-marker-style = "git";
         };
 
         git = {
