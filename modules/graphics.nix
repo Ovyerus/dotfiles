@@ -15,9 +15,12 @@ delib.module {
       enable = true;
       enable32Bit = true;
     };
+    hardware.amdgpu = {
+      initrd.enable = true;
+      opencl.enable = true;
+    };
 
     environment.systemPackages = with pkgs; [amdgpu_top lact nvtopPackages.full];
-    environment.sessionVariables.KWIN_DRM_NO_AMS = "1";
 
     systemd.services.lactd = {
       description = "AMDGPU Control Daemon";
