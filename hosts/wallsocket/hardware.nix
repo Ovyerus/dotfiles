@@ -16,7 +16,7 @@ in
       nixpkgs.hostPlatform = platform;
       system.stateVersion = stateVersion;
 
-      hardware.enableRedistributableFirmware = true;
+      hardware.enableAllFirmware = true;
       hardware.cpu.amd.updateMicrocode = true;
 
       # Kernel

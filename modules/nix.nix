@@ -22,6 +22,7 @@ in
       // {
         xdg.configFile."nixpkgs/config.nix".source = ../files/nixpkgs-config.nix;
       };
+
     nixos.always =
       shared
       // {
@@ -38,6 +39,12 @@ in
             type = "path";
             path = inputs.nixpkgs;
             narHash = inputs.nixpkgs.narHash;
+          };
+
+          settings = {
+            auto-optimise-store = true;
+            experimental-features = ["nix-command" "flakes"];
+            trusted-users = ["root" "@wheel" "ovy"];
           };
         };
 
