@@ -80,6 +80,7 @@ delib.module {
             wakatime.vscode-wakatime
             redhat.vscode-yaml
             arcanis.vscode-zipfs
+            golang.go
             vscode-marketplace.wraith13.background-phi-colors
             vscode-marketplace.be5invis.theme-dolch
             vscode-marketplace.fabiospampinato.vscode-diff
@@ -100,6 +101,7 @@ delib.module {
           "[prisma]"."editor.defaultFormatter" = "Prisma.prisma";
           "[python]"."editor.defaultFormatter" = "ms-python.python";
           "[rust]"."editor.defaultFormatter" = "rust-lang.rust-analyzer";
+          "[go]"."editor.defaultFormatter" = "golang.go";
 
           # Sane defaults
           "editor.tabSize" = 2;
