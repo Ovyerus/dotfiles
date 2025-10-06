@@ -105,6 +105,7 @@ delib.module {
           n = ["new"];
           tug = ["bookmark" "move" "--from" "closest_bookmark(@-)" "--to" "@-"];
           tug-here = ["bookmark" "move" "--from" "closest_bookmark(@)" "--to" "@"];
+          solve = ["resolve" "--tool" "mergiraf"];
         };
 
         merge-tools.mergiraf = {
