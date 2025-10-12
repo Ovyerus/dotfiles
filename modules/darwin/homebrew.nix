@@ -38,6 +38,7 @@ delib.module {
       # Actually searches symlinks for apps, compared to Alfred.
       "raycast"
       "swiftformat-for-xcode"
+      "tailscale-app"
       # "vorta"
       "zen"
     ];
@@ -46,7 +47,6 @@ delib.module {
       Keka = 470158793;
       "Yubico Authenticator" = 1497506650;
       "System Color Picker" = 1545870783;
-      Tailscale = 1475387142;
     };
   };
 }
