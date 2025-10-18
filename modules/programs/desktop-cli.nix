@@ -31,10 +31,19 @@ delib.module {
       enable = true;
       flake = "/etc/nixos";
     };
+
+    environment.systemPackages = with pkgs.gst_all_1; [
+      gstreamer
+      gst-vaapi
+      gst-libav
+      gst-plugins-good
+      gst-plugins-ugly
+      gst-plugins-bad
+    ];
   };
 
   darwin.ifEnabled = {myconfig, ...}: {
-    environment.systemPackages = [pkgs.nh];
+    environment.systemPackages = with pkgs; [nh];
     environment.variables.NH_FLAKE = "/Users/${myconfig.constants.username}/.config/nix-darwin";
   };
 }

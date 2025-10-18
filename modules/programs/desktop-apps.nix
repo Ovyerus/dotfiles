@@ -28,7 +28,6 @@ delib.module {
       lunacy
       lutris
       # mixxx
-      obs-studio
       obsidian
       oversteer
       p7zip
