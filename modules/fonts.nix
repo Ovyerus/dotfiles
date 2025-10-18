@@ -12,8 +12,9 @@ delib.module {
       packages = [
         pkgs.ubuntu_font_family
         pkgs.inter
-        pkgs.corefonts
-        pkgs.vista-fonts
+        # Only needed for one specific thing and now can't download from sourceforge for some reason
+        # pkgs.corefonts
+        # pkgs.vista-fonts
         inputs.iosevka-solai.packages.x86_64-linux.bin
       ];
 
