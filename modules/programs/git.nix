@@ -98,6 +98,8 @@ delib.module {
           "closest_bookmark(to)" = "heads(::to & bookmarks())";
           "p(n)" = "p(@, n)";
           "p(r, n)" = "roots(r | ancestors(r-, n))";
+          "tail()" = "tail(@)";
+          "tail(h)" = "roots(trunk()..h)";
         };
 
         aliases = {
