@@ -15,7 +15,7 @@ delib.module {
       blender
       btop # TODO: module & options
       bruno
-      # davinci-resolve
+      davinci-resolve
       # distrobox
       gajim
       glaxnimate
