@@ -38,7 +38,13 @@ delib.module {
 
     # environment.sessionVariables."NIXOS_OZONE_WL" = 1;
     environment.sessionVariables."MOZ_ENABLE_WAYLAND" = 0;
-    environment.systemPackages = with pkgs; [adwaita-icon-theme kdePackages.kcalc kdePackages.partitionmanager kdePackages.kcolorchooser];
+    environment.systemPackages = with pkgs; [
+      adwaita-icon-theme
+      kdePackages.kcalc
+      kdePackages.partitionmanager
+      kdePackages.kcolorchooser
+      kdePackages.kdenlive
+    ];
 
     # TODO: move
     boot.plymouth = {
