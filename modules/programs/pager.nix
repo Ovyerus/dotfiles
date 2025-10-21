@@ -8,10 +8,10 @@ delib.module {
 
   # TODO: read docs and experiment
   home.always = {
-    home.packages = [pkgs.moar];
+    home.packages = [pkgs.moor];
     home.sessionVariables = {
-      PAGER = "moar";
-      MOAR = "--no-linenumbers";
+      PAGER = "moor";
+      MOOR = "--no-linenumbers";
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";
       MANROFFOPT = "-c";
     };

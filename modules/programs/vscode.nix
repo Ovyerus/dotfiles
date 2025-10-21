@@ -150,6 +150,7 @@ delib.module {
           ];
           # "prettier.prettierPath" = "prettierd";
           "prettier.proseWrap" = "always";
+          "chat.disableAIFeatures" = true;
 
           # Pretties
           "workbench.colorTheme" = "Dolch";

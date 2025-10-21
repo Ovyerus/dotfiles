@@ -14,7 +14,7 @@ delib.module {
       cursor_shape = "block";
       cursor_shape_unfocused = "hollow";
       scrollback_lines = 10000;
-      scrollback_pager = "moar +INPUT_LINE_NUMBER";
+      scrollback_pager = "moor +INPUT_LINE_NUMBER";
       scrollback_pager_history_size = 5;
       window_padding_width = 8;
       hide_window_decorations = true;
