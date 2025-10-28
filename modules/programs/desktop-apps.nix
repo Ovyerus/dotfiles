@@ -16,7 +16,10 @@ delib.module {
       btop # TODO: module & options
       bruno
       davinci-resolve
-      # distrobox
+      (discord.override {
+        withOpenASAR = true;
+        withVencord = true;
+      })
       gajim
       glaxnimate
       # godot_4
@@ -46,7 +49,7 @@ delib.module {
       qbittorrent
       qimgv
       slack
-      vesktop
+      # vesktop
       vlc
       vorta
       winetricks
