@@ -20,7 +20,7 @@ delib.module {
       opencl.enable = true;
     };
 
-    environment.systemPackages = with pkgs; [amdgpu_top lact nvtopPackages.full];
+    environment.systemPackages = with pkgs; [amdgpu_top lact];
 
     systemd.services.lactd = {
       description = "AMDGPU Control Daemon";

@@ -15,9 +15,6 @@ delib.module {
 
     programs.git = {
       enable = true;
-      userName = userfullname;
-      userEmail = useremail;
-      delta.enable = true;
 
       signing = {
         signByDefault = true;
@@ -25,7 +22,12 @@ delib.module {
         key = "~/.ssh/id_ed25519_sk_rk";
       };
 
-      extraConfig = {
+      settings = {
+        user = {
+          name = userfullname;
+          email = useremail;
+        };
+
         # TODO: custom pretty stuff?
         blame.showEmail = true;
         init.defaultBranch = "main";
@@ -89,7 +91,7 @@ delib.module {
           default-command = "log";
           show-cryptographic-signatures = true;
           conflict-marker-style = "git";
-          diff-formatter = "delta";
+          # diff-formatter = "delta";
           editor = "codium -w";
           merge-editor = "vscodium";
         };
@@ -130,6 +132,12 @@ delib.module {
           backends.ssh.allowed-signers = "~/.config/git/allowed_signers";
         };
       };
+    };
+
+    programs.delta = {
+      enable = true;
+      enableGitIntegration = true;
+      enableJujutsuIntegration = true;
     };
 
     programs.mergiraf.enable = true;

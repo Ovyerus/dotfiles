@@ -65,7 +65,7 @@ delib.module {
   home.always = {
     home.packages = with pkgs; [
       curlie
-      du-dust
+      dust
       duf
       fd
       jq

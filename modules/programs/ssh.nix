@@ -4,6 +4,8 @@ delib.module {
 
   home.always.programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
+
     matchBlocks = {
       "*" = {
         identitiesOnly = true;

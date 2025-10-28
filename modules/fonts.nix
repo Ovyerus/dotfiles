@@ -10,7 +10,8 @@ delib.module {
   nixos.always = {
     fonts = {
       packages = [
-        pkgs.ubuntu_font_family
+        pkgs.ubuntu-classic
+        pkgs.ubuntu-sans
         pkgs.inter
         # Only needed for one specific thing and now can't download from sourceforge for some reason
         # pkgs.corefonts
