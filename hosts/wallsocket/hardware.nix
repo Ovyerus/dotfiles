@@ -1,6 +1,7 @@
 {
   delib,
   lib,
+  pkgs,
   ...
 }: let
   platform = "x86_64-linux";
@@ -24,6 +25,7 @@ in
       boot.initrd.kernelModules = [];
       boot.kernelModules = ["kvm-amd"];
       boot.extraModulePackages = [];
+      boot.kernelPackages = pkgs.linuxPackages_latest;
 
       # Bootloader
       boot.loader.systemd-boot.enable = true;
