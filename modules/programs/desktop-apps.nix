@@ -1,6 +1,7 @@
 {
   delib,
   pkgs,
+  homeConfig,
   ...
 }:
 delib.module {
@@ -32,6 +33,7 @@ delib.module {
       lutris
       # mixxx
       obsidian
+      opencloud-desktop
       oversteer
       p7zip
       picard
@@ -46,6 +48,7 @@ delib.module {
           temurin-bin-17
         ];
       })
+      protonup-qt
       qbittorrent
       qimgv
       slack
@@ -57,6 +60,21 @@ delib.module {
       yubioath-flutter
     ];
 
-    services.owncloud-client.enable = true;
+    systemd.user.services.opencloud-client = {
+      Unit = {
+        Description = "OpenCloud Client";
+        After = ["graphical-session.target"];
+        PartOf = ["graphical-session.target"];
+      };
+
+      Service = {
+        Environment = ["PATH=${homeConfig.home.profileDirectory}/bin"];
+        ExecStart = "${pkgs.opencloud-desktop}/bin/opencloud";
+      };
+
+      Install = {
+        WantedBy = ["graphical-session.target"];
+      };
+    };
   };
 }
