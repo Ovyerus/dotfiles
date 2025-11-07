@@ -7,7 +7,6 @@ delib.host {
   myconfig.tray.enable = false;
   myconfig.virtualisation.enable = false;
 
-  myconfig.programs.firefox.enable = false;
   myconfig.programs.chromium.enable = false;
   myconfig.programs.desktop-apps.enable = false;
   myconfig.programs.espanso.enable = false;
