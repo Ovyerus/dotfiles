@@ -34,6 +34,7 @@ delib.module {
         auto-optimise-store = true;
         experimental-features = ["nix-command" "flakes"];
         trusted-users = ["root" "@wheel" "ovy"];
+        warn-dirty = false;
       };
     };
 
@@ -78,6 +79,7 @@ delib.module {
         experimental-features = "nix-command flakes";
         trusted-users = ["root" "ovy"];
         sandbox = true;
+        warn-dirty = false;
       };
     };
   };
