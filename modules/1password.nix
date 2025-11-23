@@ -20,6 +20,7 @@ delib.module {
       text = ''
         vivaldi-bin
         zen
+        zen-bin
       '';
       mode = "0755";
     };
