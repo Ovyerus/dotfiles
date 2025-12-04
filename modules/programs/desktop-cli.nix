@@ -1,5 +1,6 @@
 {
   delib,
+  lib,
   pkgs,
   ...
 }:
@@ -8,25 +9,25 @@ delib.module {
 
   options = delib.singleEnableOption true;
 
-  home.ifEnabled.home.packages = with pkgs; [
-    age-plugin-yubikey
-    alejandra
-    cachix
-    claude-code
-    claude-code-router
-    fastfetch
-    hexyl
-    lazydocker
-    macchina
-    minio-client
-    mix2nix
-    minisign
-    mtr
-    nix-output-monitor
-    pgcli
-    rage
-    systemctl-tui
-  ];
+  home.ifEnabled.home.packages = with pkgs;
+    [
+      age-plugin-yubikey
+      alejandra
+      cachix
+      fastfetch
+      hexyl
+      lazydocker
+      macchina
+      minio-client
+      mix2nix
+      minisign
+      mtr
+      nix-output-monitor
+      pgcli
+      rage
+      systemctl-tui
+    ]
+    ++ (lib.optional pkgs.stdenv.isLinux [pkgs.claude-code pkgs.claude-code-router]);
 
   nixos.ifEnabled = {myconfig, ...}: {
     programs.nh = {
