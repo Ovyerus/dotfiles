@@ -5,7 +5,7 @@
     # nur.url = "github:nix-community/NUR";
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin";
+      url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -37,6 +37,7 @@
     denix = {
       url = "github:yunfachi/denix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nix-darwin.follows = "nix-darwin";
       inputs.home-manager.follows = "home-manager";
     };
 
