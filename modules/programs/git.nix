@@ -121,7 +121,6 @@ delib.module {
 
         git = {
           sign-on-push = true;
-          push-new-bookmarks = true;
           write-change-id-header = true;
         };
 
@@ -131,6 +130,8 @@ delib.module {
           key = "~/.ssh/id_ed25519_sk_rk.pub";
           backends.ssh.allowed-signers = "~/.config/git/allowed_signers";
         };
+
+        remotes.origin.auto-track-bookmarks = "glob:*";
       };
     };
 
