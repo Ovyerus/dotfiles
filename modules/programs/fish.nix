@@ -84,7 +84,7 @@ delib.module {
           owner = "PatrickF1";
           repo = "fzf.fish";
           rev = "8920367cf85eee5218cc25a11e209d46e2591e7a";
-          hash = "sha256-lxQZo6APemNjt2c21IL7+uY3YVs81nuaRUL7NDMcB6s=";
+          hash = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
         };
       }
       {
@@ -93,7 +93,7 @@ delib.module {
           owner = "gazorby";
           repo = "fifc";
           rev = "a01650cd432becdc6e36feeff5e8d657bd7ee84a";
-          hash = "sha256-Nrart7WAh2VQhsDDe0EFI59TqvBO56US2MraqencxgE";
+          hash = "sha256-Ynb0Yd5EMoz7tXwqF8NNKqCGbzTZn/CwLsZRQXIAVp4=";
         };
       }
       {
