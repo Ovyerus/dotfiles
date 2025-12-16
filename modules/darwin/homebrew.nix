@@ -40,6 +40,7 @@ delib.module {
       "swiftformat-for-xcode"
       "tailscale-app"
       # "vorta"
+      "vesktop"
       "zen"
     ];
 
