@@ -13,7 +13,8 @@
                   "description": "MacBook internal keyboard",
                   "vendor_id": 1452,
                   "product_id": 641
-                }
+                },
+                { "is_built_in_keyboard": true }
               ]
             }
           ],
@@ -50,7 +51,8 @@
                   "description": "MacBook internal keyboard",
                   "vendor_id": 1452,
                   "product_id": 641
-                }
+                },
+                { "is_built_in_keyboard": true }
               ]
             }
           ],
