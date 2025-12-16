@@ -45,15 +45,9 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # ags = {
-    #   url = "github:Aylur/ags";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs = {
-    # ags,
     denix,
     home-manager,
     lix-module,
@@ -64,9 +58,15 @@
     self,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-    # agsPkgs = ags.packages.${system};
+    forSystems = fn:
+      nixpkgs.lib.genAttrs [
+        "aarch64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+        "x86_64-linux"
+      ] (system: fn nixpkgs.legacyPackages.${system});
+    defaultForSystems = fn: forSystems (pkgs: {default = fn pkgs;});
+
     mkConfigurations = moduleSystem:
       denix.lib.configurations (let
         homeManagerUser = "ovy";
@@ -77,20 +77,14 @@
         specialArgs = {inherit inputs moduleSystem homeManagerUser;};
       });
   in {
-    packages.${system} = {
+    packages = forSystems (pkgs: {
       iconifydl = pkgs.callPackage ./pkgs/iconifydl.nix {};
+    });
 
-      # default = ags.lib.bundle {
-      #   inherit pkgs;
-      #   src = ./files/astal;
-      #   name = "ovy-shell";
-      #   entry = "app.ts";
-      # };
-    };
-
-    # devShells.x86_64-linux.default = pkgs.mkShell {
-    #   buildInputs = [agsPkgs.agsFull agsPkgs.io agsPkgs.apps agsPkgs.tray self.packages.${system}.iconifydl];
-    # };
+    devShells = defaultForSystems (pkgs:
+      pkgs.mkShell {
+        buildInputs = [pkgs.just];
+      });
 
     nixosConfigurations = mkConfigurations "nixos";
     darwinConfigurations = mkConfigurations "darwin";
@@ -107,11 +101,6 @@
     #   };
     # };
 
-    formatter = {
-      aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.alejandra;
-      aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
-      x86_64-darwin = nixpkgs.legacyPackages.x86_64-darwin.alejandra;
-      x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
-    };
+    formatter = forSystems (pkgs: pkgs.alejandra);
   };
 }
