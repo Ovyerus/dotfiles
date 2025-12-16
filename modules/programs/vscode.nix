@@ -22,7 +22,8 @@ delib.module {
         enableExtensionUpdateCheck = false;
 
         extensions = let
-          vscode-extensions = inputs.nix-vscode-extensions.extensions.${pkgs.system};
+          system = pkgs.stdenv.hostPlatform.system;
+          vscode-extensions = inputs.nix-vscode-extensions.extensions.${system};
           inherit (vscode-extensions) open-vsx vscode-marketplace;
         in
           with open-vsx; [
