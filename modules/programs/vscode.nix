@@ -99,6 +99,7 @@ delib.module {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
           "[elixir]"."editor.defaultFormatter" = "JakeBecker.elixir-ls";
           "[nix]"."editor.defaultFormatter" = "kamadorueda.alejandra";
+          "[phoenix-heex]"."editor.defaultFormatter" = "JakeBecker.elixir-ls";
           "[prisma]"."editor.defaultFormatter" = "Prisma.prisma";
           "[python]"."editor.defaultFormatter" = "ms-python.python";
           "[rust]"."editor.defaultFormatter" = "rust-lang.rust-analyzer";
