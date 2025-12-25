@@ -27,6 +27,7 @@ delib.module {
 
     casks = [
       "1password"
+      "affinity"
       "blender"
       "discord"
       "figma"

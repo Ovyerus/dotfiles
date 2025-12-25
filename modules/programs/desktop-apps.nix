@@ -31,7 +31,6 @@ delib.module {
       lunacy
       lutris
       # mixxx
-      obsidian
       oversteer
       p7zip
       picard
