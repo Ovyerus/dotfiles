@@ -15,6 +15,7 @@ delib.module {
       git
       nil
       niri
+      nixd
       openssh
       p7zip
       pciutils
@@ -33,6 +34,7 @@ delib.module {
       git
       imagemagick
       nil
+      nixd
       openssh
       wget
       # TODO: the Xcode packages makes us manually download and put it into the Nix store
