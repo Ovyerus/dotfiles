@@ -105,6 +105,7 @@ delib.module {
         };
 
         aliases = {
+          a = ["abandon"];
           e = ["edit"];
           n = ["new"];
           tug = ["bookmark" "move" "--from" "closest_bookmark(@-)" "--to" "@-"];
