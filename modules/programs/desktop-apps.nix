@@ -14,7 +14,7 @@ delib.module {
       audacity
       blender-hip
       btop # TODO: module & options
-      bruno
+      # bruno
       davinci-resolve
       (discord.override {
         withOpenASAR = true;
