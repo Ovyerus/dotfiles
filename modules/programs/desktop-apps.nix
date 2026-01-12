@@ -12,7 +12,7 @@ delib.module {
     home.packages = with pkgs; [
       alejandra
       audacity
-      blender-hip
+      blender
       btop # TODO: module & options
       # bruno
       davinci-resolve
