@@ -3,8 +3,6 @@ delib.module {
   name = "devices";
 
   nixos.always = {
-    programs.adb.enable = true;
-
     services = {
       avahi = {
         enable = true;
