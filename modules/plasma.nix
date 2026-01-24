@@ -45,7 +45,8 @@ delib.module {
       kdePackages.kcalc
       kdePackages.partitionmanager
       kdePackages.kcolorchooser
-      kdePackages.kdenlive
+      haruna
+      # kdePackages.kdenlive
     ];
 
     # TODO: move
