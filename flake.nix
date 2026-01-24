@@ -41,10 +41,15 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
+    dw-proton = {
+      url = "github:imaviso/dwproton-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # zen-browser = {
+    #   url = "github:youwen5/zen-browser-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = {
