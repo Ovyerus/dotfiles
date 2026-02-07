@@ -1,5 +1,6 @@
 {
   delib,
+  lib,
   pkgs,
   ...
 }:
@@ -93,7 +94,7 @@ delib.module {
           conflict-marker-style = "git";
           # diff-formatter = "delta";
           editor = "codium -w";
-          merge-editor = "vscodium";
+          merge-editor = lib.mkForce "vscodium";
         };
 
         revset-aliases = {
@@ -111,13 +112,6 @@ delib.module {
           tug = ["bookmark" "move" "--from" "closest_bookmark(@-)" "--to" "@-"];
           tug-here = ["bookmark" "move" "--from" "closest_bookmark(@)" "--to" "@"];
           solve = ["resolve" "--tool" "mergiraf"];
-        };
-
-        merge-tools.mergiraf = {
-          program = "mergiraf";
-          merge-args = ["merge" "$base" "$left" "$right" "-o" "$output"];
-          merge-conflict-exit-codes = [1];
-          conflict-marker-style = "git";
         };
 
         git = {
