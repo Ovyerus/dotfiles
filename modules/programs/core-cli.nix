@@ -10,7 +10,7 @@ delib.module {
 
   nixos.always = {
     environment.systemPackages = with pkgs; [
-      ffmpeg-full
+      # ffmpeg-full
       fuzzel
       git
       nil
