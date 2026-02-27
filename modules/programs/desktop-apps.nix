@@ -23,7 +23,7 @@ delib.module {
       gajim
       glaxnimate
       # godot_4
-      # handbrake
+      handbrake
       heynote
       klog-time-tracker
       libreoffice
