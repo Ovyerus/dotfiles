@@ -25,6 +25,8 @@ in
     };
 
     home.ifEnabled = {
+      home.packages = [pkgs.pcsx2];
+
       programs.mangohud = {
         enable = true;
         settings = {
