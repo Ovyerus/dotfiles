@@ -29,11 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.3-2.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     denix = {
       url = "github:yunfachi/denix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,7 +50,6 @@
   outputs = {
     denix,
     home-manager,
-    lix-module,
     niri-flake,
     nix-darwin,
     nix-index-database,

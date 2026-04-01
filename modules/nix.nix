@@ -1,6 +1,7 @@
 {
   delib,
   inputs,
+  pkgs,
   ...
 }:
 delib.module {
@@ -14,8 +15,21 @@ delib.module {
 
   nixos.always = {
     nixpkgs.config = import ../files/nixpkgs-config.nix;
+    nixpkgs.overlays = [
+      (final: prev: {
+        inherit
+          (prev.lixPackageSets.stable)
+          nixpkgs-review
+          nix-eval-jobs
+          nix-fast-build
+          colmena
+          ;
+      })
+    ];
 
     nix = {
+      package = pkgs.lixPackageSets.stable.lix;
+
       gc = {
         automatic = true;
         options = "--delete-older-than 10d";
@@ -43,14 +57,27 @@ delib.module {
 
   darwin.always = {
     nixpkgs.config = import ../files/nixpkgs-config.nix;
+    nixpkgs.overlays = [
+      (final: prev: {
+        inherit
+          (prev.lixPackageSets.stable)
+          nixpkgs-review
+          nix-eval-jobs
+          nix-fast-build
+          colmena
+          ;
+      })
+    ];
 
     nix = {
+      package = pkgs.lixPackageSets.stable.lix;
+
       buildMachines = [
         {
-          hostName = "rushing.axolotl-map.ts.net";
+          hostName = "nightline.axolotl-map.ts.net";
           sshUser = "colmena-deploy";
           system = "x86_64-linux";
-          speedFactor = 2;
+          speedFactor = 16;
           maxJobs = 6;
           protocol = "ssh-ng";
         }
