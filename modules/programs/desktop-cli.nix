@@ -13,6 +13,7 @@ delib.module {
     age-plugin-yubikey
     alejandra
     cachix
+    claude-code
     fastfetch
     hexyl
     lazydocker
