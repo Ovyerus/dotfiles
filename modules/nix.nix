@@ -53,6 +53,7 @@ delib.module {
     };
 
     system.tools.nixos-option.enable = false;
+    programs.nix-ld.enable = true;
   };
 
   darwin.always = {
