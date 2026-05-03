@@ -16,10 +16,11 @@ delib.module {
       btop # TODO: module & options
       # bruno
       davinci-resolve
-      (discord.override {
-        withOpenASAR = true;
-        withVencord = true;
-      })
+      # (discord.override {
+      #   withOpenASAR = true;
+      #   withVencord = true;
+      # })
+      vesktop
       gajim
       glaxnimate
       # godot_4
@@ -29,7 +30,7 @@ delib.module {
       libreoffice
       losslesscut-bin
       lunacy
-      lutris
+      # lutris
       # mixxx
       oversteer
       p7zip
