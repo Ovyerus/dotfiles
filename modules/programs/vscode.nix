@@ -12,10 +12,9 @@ delib.module {
   home.ifEnabled = {
     home.sessionVariables.EDITOR = "codium --wait";
 
-    programs.vscode = {
+    programs.vscodium = {
       enable = true;
       mutableExtensionsDir = false;
-      package = pkgs.vscodium;
 
       profiles.default = {
         enableUpdateCheck = false;
