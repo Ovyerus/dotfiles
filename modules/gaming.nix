@@ -17,8 +17,11 @@ in
         enable = true;
         remotePlay.openFirewall = true;
         localNetworkGameTransfers.openFirewall = true;
+        extest.enable = true;
         extraCompatPackages = [pkgs.proton-ge-bin dw-proton];
+        extraPackages = [pkgs.hidapi pkgs.libGL];
       };
+      hardware.steam-hardware.enable = true;
 
       programs.gamescope.enable = true;
       programs.gamemode.enable = true;
