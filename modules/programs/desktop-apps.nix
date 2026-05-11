@@ -40,10 +40,12 @@ delib.module {
       podman-tui
       # plasticity
       (prismlauncher.override {
+        additionalLibs = [libvlc];
         jdks = [
+          temurin-bin-25
           temurin-bin-21
-          temurin-bin-8
           temurin-bin-17
+          temurin-bin-8
         ];
       })
       protonup-qt

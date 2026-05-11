@@ -22,7 +22,7 @@ delib.module {
       sysstat
       unar
       wget
-      wineWowPackages.full
+      # wineWowPackages.full
     ];
 
     programs.fish.enable = true;
