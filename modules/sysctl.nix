@@ -6,6 +6,7 @@ delib.module {
     boot.kernel.sysctl = {
       "vm.max_map_count" = 2147483642;
       "fs.file-max" = 2147483642;
+      "fs.inotify.max_user_watches" = 2147483642;
     };
   };
 }
