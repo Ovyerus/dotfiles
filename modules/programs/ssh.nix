@@ -6,11 +6,11 @@ delib.module {
     enable = true;
     enableDefaultConfig = false;
 
-    matchBlocks = {
+    settings = {
       "*" = {
-        identitiesOnly = true;
-        identityFile = "~/.ssh/id_ed25519_sk_rk";
-        user = "ovy";
+        IdentitiesOnly = true;
+        IdentityFile = "~/.ssh/id_ed25519_sk_rk";
+        User = "ovy";
       };
     };
 

@@ -26,11 +26,11 @@ delib.module {
     };
   };
 
-  home.ifEnabled.programs.ssh.matchBlocks = let
+  home.ifEnabled.programs.ssh.settings = let
     _1passwordAgent = options:
       homeConfig.lib.dag.entryBefore ["*"] ({
-          extraOptions.IdentityAgent = "~/.1password/agent.sock";
-          extraOptions.IdentitiesOnly = "no";
+          IdentityAgent = "~/.1password/agent.sock";
+          IdentitiesOnly = "no";
         }
         // options);
   in {

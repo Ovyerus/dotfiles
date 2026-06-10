@@ -34,13 +34,12 @@ delib.module {
     services.resolved = {
       enable = true;
       # dnssec = "true";
-      domains = ["~."];
-      fallbackDns = cfg.nameservers;
+      settings.Resolve = {
+        Domains = ["~."];
+        FallbackDNS = cfg.nameservers;
+      };
       # dnsovertls = "trues";
     };
-
-    # services.mullvad-vpn.enable = true;
-    # services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
     users.users.${username}.extraGroups = ["networkmanager"];
   };
