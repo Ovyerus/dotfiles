@@ -5,9 +5,7 @@ delib.module {
   nixos.always = {
     systemd = {
       settings.Manager.DefaultTimeoutStopSec = "30s";
-      user.extraConfig = ''
-        DefaultTimeoutStopSec=30s
-      '';
+      user.settings.Manager.DefaultTimeoutStopSec = "30s";
     };
 
     services.udev.extraRules = ''
