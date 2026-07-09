@@ -37,7 +37,7 @@ delib.module {
 
     environment.systemPackages = with pkgs.gst_all_1; [
       gstreamer
-      gst-vaapi
+      # gst-vaapi
       gst-libav
       gst-plugins-good
       gst-plugins-ugly
