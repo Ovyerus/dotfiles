@@ -18,7 +18,7 @@ delib.module {
       enable = true;
 
       signing = {
-        signByDefault = true;
+        signByDefault = false;
         format = "ssh";
         key = "~/.ssh/id_ed25519_sk_rk";
       };
